@@ -9,10 +9,10 @@
 *{box-sizing:border-box}html{height:100%}
 body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);font-family:Tahoma,Arial,sans-serif;transition:.3s}
 #app{min-height:100vh;display:flex;flex-direction:column}main{flex:1}
-button,input,select,textarea{font:inherit}
+button,input,select{font:inherit}
 .btn{border:0;border-radius:10px;padding:10px 18px;cursor:pointer;background:var(--red);color:#fff;font-weight:bold}
-.btn.y{background:var(--yel);color:#000}.btn.p{background:var(--pur)}.btn.g{background:var(--card);color:var(--fg);border:1px solid var(--bd)}.btn:disabled{opacity:.5}.btn.s{padding:6px 12px;font-size:.85em}
-input,select,textarea{width:100%;padding:11px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--fg);margin:5px 0}
+.btn.y{background:var(--yel);color:#000}.btn.p{background:var(--pur)}.btn.g{background:var(--card);color:var(--fg);border:1px solid var(--bd)}.btn:disabled{opacity:.5}
+input,select{width:100%;padding:11px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--fg);margin:5px 0}
 .box{max-width:430px;margin:6vh auto;padding:24px;border-radius:16px;background:var(--card);border-top:4px solid var(--red);border-bottom:4px solid var(--pur)}
 .box h2{margin-top:0}.sm{font-size:.82em}.err{color:#e33;font-size:.85em;min-height:1em}.ok{color:#1a8a3a;font-size:.9em}
 a.l{color:var(--pur);cursor:pointer;text-decoration:underline}
@@ -28,7 +28,7 @@ a.l{color:var(--pur);cursor:pointer;text-decoration:underline}
 .bell{position:relative;background:none;border:0;font-size:1.5em;cursor:pointer;color:var(--fg)}
 .bell b{position:absolute;top:-2px;right:-4px;background:var(--red);color:#fff;border-radius:50%;font-size:.45em;padding:2px 6px}
 .drop{position:absolute;left:12px;top:56px;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px;width:240px;z-index:6}
-.menu{position:fixed;top:0;right:0;height:100%;width:min(300px,85vw);background:var(--card);border-inline-start:4px solid var(--pur);padding:70px 18px 18px;z-index:9;transform:translateX(100%);transition:.3s;overflow:auto}
+.menu{position:fixed;top:0;right:0;height:100%;width:min(300px,85vw);background:var(--card);border-inline-start:4px solid var(--pur);padding:70px 18px 18px;z-index:9;transform:translateX(100%);transition:.3s}
 .menu.o{transform:none}.menu a{display:block;padding:14px;border-radius:10px;cursor:pointer;font-weight:bold}.menu a:hover{background:var(--red);color:#fff}
 .shade{position:fixed;inset:0;background:#0008;z-index:8}
 .wrap{max-width:900px;margin:0 auto;padding:16px}
@@ -37,15 +37,8 @@ a.l{color:var(--pur);cursor:pointer;text-decoration:underline}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .sq{aspect-ratio:1;background:var(--card);border:1px solid var(--bd);border-bottom:4px solid var(--red);border-radius:14px;padding:12px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer}
 .sq:hover{border-bottom-color:var(--pur)}.sq small{opacity:.7}
-.tile{background:var(--card);border:1px solid var(--bd);border-top:4px solid var(--pur);border-radius:14px;padding:14px;text-align:center;cursor:pointer}.tile h2{margin:6px 0;color:var(--red)}
-.big{display:flex;align-items:center;gap:14px;background:linear-gradient(120deg,var(--pur),var(--red));color:#fff;border-radius:16px;padding:16px;margin:14px 0;cursor:pointer}.big h2{margin:0}
 .row{display:flex;justify-content:space-between;align-items:center;gap:8px;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px;margin:8px 0;flex-wrap:wrap}
-.who{display:flex;align-items:center;gap:10px}
-.av{width:54px;height:54px;border-radius:50%;object-fit:cover;background:var(--pur);color:#fff;display:grid;place-items:center;font-weight:900;font-size:1.3em;flex:none}
-.mod{position:fixed;inset:0;background:#000a;z-index:20;display:grid;place-items:center;padding:14px}.mod>div{background:var(--bg);padding:20px;border-radius:16px;max-width:520px;width:100%;max-height:90vh;overflow:auto;border-top:4px solid var(--red)}
-.q{background:var(--card);border-radius:10px;padding:10px;margin:8px 0}.q label{display:flex;gap:8px;align-items:center;padding:4px 0}.q input[type=radio]{width:auto;margin:0}
-.qb{background:var(--card);border-radius:10px;padding:10px;margin:8px 0;border-inline-start:4px solid var(--pur)}
-.badge{display:inline-block;background:var(--red);color:#fff;border-radius:20px;padding:2px 10px;font-size:.8em}.badge.g{background:#1a8a3a}
+.mod{position:fixed;inset:0;background:#000a;z-index:20;display:grid;place-items:center;padding:14px}.mod>div{background:var(--bg);padding:20px;border-radius:16px;max-width:460px;width:100%;max-height:90vh;overflow:auto;border-top:4px solid var(--red)}
 .foot{text-align:center;padding:18px 12px;font-size:.9em;border-top:3px solid var(--pur);margin-top:30px;background:var(--card)}.foot a{color:var(--pur);font-weight:bold;text-decoration:none}
 </style></head><body><div id="app"></div>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
@@ -61,27 +54,20 @@ const firebaseConfig = {
   appId: "1:61574471637:web:5d52d21bc0eedf508fe75c"
 };
 firebase.initializeApp(firebaseConfig);
-const auth=firebase.auth(),fsdb=firebase.firestore(),FV=firebase.firestore.FieldValue;
+const auth=firebase.auth(),fsdb=firebase.firestore();
 const TEACHER='teacher1112@manasa.app';
-let unsubs=[],examUnsubs=[],examKey='';
+let lessonUnsub=null,examUnsub=null,selfUnsub=null;
 auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(console.error);
 
 const LS={g(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-const T={ar:{brand:'منصة ماناسا',hero:'تعليمك أساس',login:'تسجيل الدخول',signup:'إنشاء جديد',user:'البريد الإلكتروني أو اسم المستخدم',uname:'اسم المستخدم',pass:'كلمة السر (6 أحرف على الأقل)',google:'الدخول بحساب جوجل',fn:'الاسم الأول',sn:'الاسم الثاني',fam:'اسم العائلة',grade:'السنة الدراسية',fp:'رقم الأب',mp:'رقم الأم',ph:'رقم الهاتف الشخصي',gm:'إيميل جوجل',back:'رجوع',home:'الرئيسية',lessons:'الدروس',exams:'الاختبارات',perf:'متابعة الأداء',set:'الإعدادات',out:'تسجيل خروج',students:'الطلاب',teachers:'المدرسين',search:'ابحث عن الدرس',searchS:'ابحث عن طالب',dream:'أنت قادر على تحقيق حلمك',latest:'أحدث الدروس',lang:'اللغة',theme:'الوضع',light:'فاتح',dark:'غامق',none:'لا يوجد شيء متاح لك حاليًا',del:'حذف',addL:'إضافة درس',addE:'إضافة اختبار',title:'العنوان',save:'حفظ',end:'وقت انتهاء الاختبار',dur:'مدة الاختبار (دقائق)',tries:'عدد مرات الفتح',open:'فتح',watch:'اضغط للمشاهدة',ban:'حظر يوم',unban:'فك الحظر',allow:'الدروس المسموحة للطالب',bad:'بيانات الدخول غير صحيحة',banned:'هذا الحساب محظور حتى',req:'املأ كل الخانات (كلمة السر 6 أحرف على الأقل)',closed:'انتهى وقت الاختبار',nomore:'استنفدت عدد المحاولات',nf:'لا توجد نتائج',close:'إغلاق',best:'أقرب نتيجة',dev:'المطور',contact:'للتواصل',devName:'محمد أحمد',joinedAt:'تاريخ التسجيل',allowedN:'الدروس المسموحة',cp:'تغيير كلمة السر',cpOld:'كلمة السر الحالية',cpNew:'كلمة السر الجديدة (6 أحرف على الأقل)',cpConf:'تأكيد كلمة السر الجديدة',cpSave:'حفظ كلمة السر الجديدة',loading:'جارٍ التحميل...',
-addT:'إضافة مدرس',editT:'تعديل المدرس',tname:'اسم المدرس',temail:'إيميل المدرس (لتسجيل دخوله)',tpass:'كلمة سر المدرس (6 أحرف على الأقل)',photo:'الصورة (اختياري)',sCount:'عدد الطلاب',reqs:'طلبات الانضمام',accept:'قبول',reject:'رفض',joinReq:'طلب انضمام',pending:'تم إرسال الطلب ⏳',joined:'منضم ✓',availT:'المدرسين المتاحين',pickT:'اضغط واختار مدرسك وابعت له طلب انضمام',noT:'لا يوجد مدرسين بعد',setQ:'قم بوضع الأسئلة',addQ:'＋ إضافة سؤال',qText:'نص السؤال',mcq4:'سؤال باختيارات (4 اختيارات)',choice:'الاختيار',answers:'الإجابات',gradeL:'الدرجة',comment:'ملاحظة',gsave:'حفظ الدرجة',waiting:'بانتظار التصحيح',start:'ابدأ',submit:'تسليم',left:'الوقت المتبقي',sent:'تم تسليم إجابتك ✓',resetPw:'كلمة السر',resetSent:'تم إرسال رابط تغيير كلمة السر إلى إيميل الطالب',myProfile:'تعديل اسمي وصورتي',noQ:'لا توجد أسئلة في هذا الاختبار',attempts:'المحاولات',noSubs:'لا توجد إجابات بعد',yourGrade:'درجتك',myStudents:'طلابي',noReq:'لا توجد طلبات',mainT:'المدرس الرئيسي',errG:'حدث خطأ، حاول مرة أخرى',confirmDel:'متأكد من الحذف؟',tAdded:'تم إنشاء حساب المدرس. أعطه الإيميل وكلمة السر.',lessonsN:'دروس',noJoin:'لسه مانضمتش لأي مدرس. افتح «المدرسين» وابعت طلب انضمام.',teacherL:'المدرس',explain:'ملاحظة: لو الطالب مسجل بحساب جوجل فمفيش كلمة سر.',link:'رابط الدرس (يوتيوب أو أي رابط)',nodata:'—',stats:'إحصائيات'},
-en:{brand:'Manasa Platform',hero:'Your Education Is the Foundation',login:'Log in',signup:'Sign up',user:'Email or username',uname:'Username',pass:'Password (min 6 chars)',google:'Sign in with Google',fn:'First name',sn:'Second name',fam:'Family name',grade:'School year',fp:"Father's phone",mp:"Mother's phone",ph:'Personal phone',gm:'Google email',back:'Back',home:'Home',lessons:'Lessons',exams:'Exams',perf:'Performance',set:'Settings',out:'Log out',students:'Students',teachers:'Teachers',search:'Search for a lesson',searchS:'Search students',dream:'You can achieve your dream',latest:'Latest lessons',lang:'Language',theme:'Theme',light:'Light',dark:'Dark',none:'Nothing available for you yet',del:'Delete',addL:'Add lesson',addE:'Add exam',title:'Title',save:'Save',end:'Exam end time',dur:'Duration (minutes)',tries:'Allowed attempts',open:'Open',watch:'Click to watch',ban:'Ban 1 day',unban:'Unban',allow:'Lessons allowed for this student',bad:'Wrong email or password',banned:'This account is banned until',req:'Fill every field (password 6+ chars)',closed:'Exam has ended',nomore:'No attempts left',nf:'No results',close:'Close',best:'Closest match',dev:'Developer',contact:'Contact',devName:'Mohamed Ahmed',joinedAt:'Joined',allowedN:'Allowed lessons',cp:'Change password',cpOld:'Current password',cpNew:'New password (min 6 chars)',cpConf:'Confirm new password',cpSave:'Save new password',loading:'Loading...',
-addT:'Add teacher',editT:'Edit teacher',tname:'Teacher name',temail:'Teacher email (for login)',tpass:'Teacher password (min 6)',photo:'Photo (optional)',sCount:'Students',reqs:'Join requests',accept:'Accept',reject:'Reject',joinReq:'Request to join',pending:'Request sent ⏳',joined:'Joined ✓',availT:'Available teachers',pickT:'Pick your teacher and send a join request',noT:'No teachers yet',setQ:'Add questions',addQ:'＋ Add question',qText:'Question text',mcq4:'Multiple choice (4 options)',choice:'Option',answers:'Answers',gradeL:'Grade',comment:'Comment',gsave:'Save grade',waiting:'Awaiting grading',start:'Start',submit:'Submit',left:'Time left',sent:'Answers submitted ✓',resetPw:'Password',resetSent:'Password reset link sent to the student\'s email',myProfile:'Edit my name & photo',noQ:'This exam has no questions',attempts:'Attempts',noSubs:'No submissions yet',yourGrade:'Your grade',myStudents:'My students',noReq:'No requests',mainT:'Main teacher',teacherL:'Teacher'}};
-const D={lessons:[],exams:[],students:[],reqs:[],subs:[],teachers:[],myReqs:[],examsBy:{},counts:{}};
-const S={lang:LS.g('lang','ar'),theme:LS.g('theme','auto'),view:'intro',user:null,menu:false,bell:false,q:'',sq:''};
-const t=k=>(T[S.lang]&&T[S.lang][k])||T.ar[k]||k,$=s=>document.querySelector(s);
-const isT=()=>S.user&&S.user.role==='t',isAdmin=()=>S.user&&S.user.admin;
-const mk=d=>({...d.data(),id:d.id});
-const byNew=(a,b)=>Number(b.id)-Number(a.id);
-const tsec=x=>x&&x.seconds?x.seconds:0;
-const tstr=x=>x&&x.toDate?x.toDate().toLocaleString():'';
-const fullName=()=>((S.user.fn||'')+' '+(S.user.fam||'')).trim()||S.user.name||S.user.email||'';
+const T={ar:{brand:'منصة ماناسا',hero:'تعليمك أساس',login:'تسجيل الدخول',signup:'إنشاء جديد',user:'البريد الإلكتروني أو اسم المستخدم',uname:'اسم المستخدم',pass:'كلمة السر (6 أحرف على الأقل)',google:'الدخول بحساب جوجل',fn:'الاسم الأول',sn:'الاسم الثاني',fam:'اسم العائلة',grade:'السنة الدراسية',fp:'رقم الأب',mp:'رقم الأم',ph:'رقم الهاتف الشخصي',gm:'إيميل جوجل',back:'رجوع',home:'الرئيسية',lessons:'الدروس',exams:'الاختبارات',perf:'متابعة الأداء',set:'الإعدادات',out:'تسجيل خروج',students:'الطلاب',search:'ابحث عن الدرس',searchS:'ابحث عن طالب',dream:'أنت قادر على تحقيق حلمك',latest:'أحدث الدروس',lang:'اللغة',theme:'الوضع',light:'فاتح',dark:'غامق',none:'لا يوجد شيء متاح لك حاليًا',del:'حذف',addL:'إضافة درس',addE:'إضافة اختبار',title:'العنوان',save:'حفظ',end:'وقت انتهاء الاختبار',dur:'مدة الاختبار (دقائق)',tries:'عدد مرات الفتح',open:'فتح',watch:'اضغط للمشاهدة',ban:'حظر يوم',unban:'فك الحظر',allow:'الدروس المسموحة للطالب',bad:'بيانات الدخول غير صحيحة',banned:'هذا الحساب محظور حتى',req:'املأ كل الخانات (كلمة السر 6 أحرف على الأقل)',closed:'انتهى وقت الاختبار',nomore:'استنفدت عدد المحاولات',started:'بدأ الاختبار، مدته (دقيقة):',tr:'محاولات',nf:'لا توجد نتائج',close:'إغلاق',best:'أقرب نتيجة',dev:'المطور',contact:'للتواصل',devName:'محمد أحمد',joined:'تاريخ التسجيل',allowedN:'الدروس المسموحة',cp:'تغيير كلمة السر',cpOld:'كلمة السر الحالية',cpNew:'كلمة السر الجديدة (6 أحرف على الأقل)',cpConf:'تأكيد كلمة السر الجديدة',cpSave:'حفظ كلمة السر الجديدة',loading:'جارٍ التحميل...'},
+en:{brand:'Manasa Platform',hero:'Your Education Is the Foundation',login:'Log in',signup:'Sign up',user:'Email or username',uname:'Username',pass:'Password (min 6 chars)',google:'Sign in with Google',fn:'First name',sn:'Second name',fam:'Family name',grade:'School year',fp:"Father's phone",mp:"Mother's phone",ph:'Personal phone',gm:'Google email',back:'Back',home:'Home',lessons:'Lessons',exams:'Exams',perf:'Performance',set:'Settings',out:'Log out',students:'Students',search:'Search for a lesson',searchS:'Search students',dream:'You can achieve your dream',latest:'Latest lessons',lang:'Language',theme:'Theme',light:'Light',dark:'Dark',none:'Nothing available for you yet',del:'Delete',addL:'Add lesson',addE:'Add exam',title:'Title',save:'Save',end:'Exam end time',dur:'Duration (minutes)',tries:'Allowed attempts',open:'Open',watch:'Click to watch',ban:'Ban 1 day',unban:'Unban',allow:'Lessons allowed for this student',bad:'Wrong email or password',banned:'This account is banned until',req:'Fill every field (password 6+ chars)',closed:'Exam has ended',nomore:'No attempts left',started:'Exam started, minutes:',tr:'attempts',nf:'No results',close:'Close',best:'Closest match',dev:'Developer',contact:'Contact',devName:'Mohamed Ahmed',joined:'Joined',allowedN:'Allowed lessons',cp:'Change password',cpOld:'Current password',cpNew:'New password (min 6 chars)',cpConf:'Confirm new password',cpSave:'Save new password',loading:'Loading...'}};
+let D={lessons:[],exams:[],users:[],att:LS.g('att',{})};
+let S={lang:LS.g('lang','ar'),theme:LS.g('theme','auto'),view:'intro',user:null,menu:false,bell:false,q:''};
+const t=k=>T[S.lang][k]||k,$=s=>document.querySelector(s),saveAtt=()=>LS.s('att',D.att);
+const isT=()=>S.user&&S.user.role==='t';
 function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-const av=(p,s)=>p&&p.photo?`<img class="av" src="${esc(p.photo)}" alt="">`:`<div class="av">${esc(((p&&p.name)||'?').trim().charAt(0))}</div>`;
+const byNew=(a,b)=>Number(b.id)-Number(a.id);
 function theme(){const r=document.documentElement;S.theme==='auto'?r.removeAttribute('data-theme'):r.setAttribute('data-theme',S.theme);r.lang=S.lang;document.body.dir=S.lang==='ar'?'rtl':'ltr'}
 function go(v){S.view=v;S.menu=false;S.bell=false;R()}
 const svg={nb:'<svg viewBox="0 0 46 60"><rect x="4" y="2" width="38" height="56" rx="4" fill="#8b0000"/><rect x="10" y="2" width="32" height="56" rx="3" fill="#fff" stroke="#111"/><path d="M16 14h20M16 24h20M16 34h20" stroke="#6b3fa0" stroke-width="2"/></svg>',
@@ -95,82 +81,49 @@ const field=(id,k,type='text')=>`<input id="${id}" type="${type}" placeholder="$
 const footer=()=>`<div class="foot">${t('dev')}: <b>${t('devName')}</b> &nbsp;|&nbsp; ${t('contact')}: <a href="tel:01020939471" dir="ltr">01020939471</a> &nbsp;<a href="https://wa.me/201020939471" target="_blank" rel="noopener">WhatsApp</a></div>`;
 
 function R(){theme();const a=$('#app');let h='';
-if(S.view==='intro'||(!S.user&&!['login','signup'].includes(S.view)))h=tools()+`<div class="hero0"><h1>${t('hero')}</h1></div>`;
+if(S.view==='intro')h=tools()+`<div class="hero0"><h1>${t('hero')}</h1></div>`;
 else if(S.view==='login')h=bar()+`<div class="box"><h2>${t('login')}</h2>${field('u','user','text')}${field('p','pass','password')}<div class="err" id="e"></div><button class="btn" style="width:100%" onclick="doLogin()">${t('login')}</button><p style="text-align:center"><button class="btn g" style="width:100%" onclick="gLogin()">G&nbsp; ${t('google')}</button></p></div>`;
 else if(S.view==='signup')h=bar()+`<div class="box"><h2>${t('signup')}</h2>${field('fn','fn')}${field('sn','sn')}${field('fam','fam')}${field('gr','grade')}${field('fp','fp','tel')}${field('mp','mp','tel')}${field('ph','ph','tel')}${field('gm','gm','email')}${field('u','uname')}${field('p','pass','password')}<div class="err" id="e"></div><button class="btn" style="width:100%" onclick="doSignup()">${t('signup')}</button></div>`;
 else h=app();
-a.innerHTML=`<main>${h}</main>${footer()}`;
-if(S.view==='teachers'&&isAdmin())loadCounts()}
+a.innerHTML=`<main>${h}</main>${footer()}`;if(S.view==='students'&&isT())loadStudents()}
 
-function app(){const v=S.view,ls=[...D.lessons].sort(byNew),T_=isT();
-const items=T_?[['home','🏠'],['lessons','📖'],['exams','📄'],['students','👥'],...(isAdmin()?[['teachers','🧑‍🏫']]:[]),['set','⚙️']]:[['home','🏠'],['teachers','🧑‍🏫'],['lessons','📖'],['exams','📄'],['perf','📈'],['set','⚙️']];
+function app(){const v=S.view,ls=[...D.lessons].sort(byNew);
+const items=[['home','🏠'],['lessons','📖'],['exams','📄'],['perf','📈'],...(isT()?[['students','👥']]:[]),['set','⚙️']];
 const watch=l=>`<button class="btn p" onclick="view('${esc(l.id)}')">▶ ${t('watch')}</button>`;
 let h=`<div class="top"><button class="ham" onclick="S.menu=true;R()"><i></i><i></i><i></i></button><span style="font-weight:900;color:var(--red)">${t('brand')}</span><button class="bell" onclick="S.bell=!S.bell;R()">🔔<b>${ls.length}</b></button></div>`;
 if(S.bell)h+=`<div class="drop">${ls.slice(0,4).map(l=>`<div class="sm" style="padding:6px 0">📘 ${esc(l.title)}</div>`).join('')||`<div class="sm">${t('none')}</div>`}</div>`;
 if(S.menu)h+=`<div class="shade" onclick="S.menu=false;R()"></div>`;
 h+=`<div class="menu ${S.menu?'o':''}">${items.map(i=>`<a onclick="go('${i[0]}')">${i[1]} ${t(i[0])}</a>`).join('')}<a onclick="logout()">🚪 ${t('out')}</a></div><div class="wrap">`;
-
-if(v==='home'){
-  if(T_)h+=`<div class="grid" style="margin-top:14px"><div class="tile" onclick="go('students')">👥<h2>${D.students.length}</h2>${t('myStudents')}</div><div class="tile" onclick="go('students')">📨<h2>${D.reqs.length}</h2>${t('reqs')}</div><div class="tile" onclick="go('lessons')">📖<h2>${ls.length}</h2>${t('lessons')}</div><div class="tile" onclick="go('exams')">📄<h2>${D.exams.length}</h2>${t('exams')}</div></div>`;
-  else h+=`<div class="big" onclick="go('teachers')"><span style="font-size:2.2em">🧑‍🏫</span><div><h2>${t('availT')}: ${D.teachers.length}</h2><div class="sm">${(S.user.teachers||[]).length?t('joined')+' ('+(S.user.teachers||[]).length+')':t('noJoin')}</div></div></div>`;
-  h+=`<div class="sbar" style="margin-top:12px">🔍<input id="q" value="${esc(S.q)}" placeholder="${t('search')}" oninput="S.q=this.value;doSearch()"></div><div id="res"></div><div class="banner">${t('dream')}</div><h3>${t('latest')}</h3><div class="grid">${ls.map(l=>`<div class="sq" onclick="view('${esc(l.id)}')"><span>📘</span><b>${esc(l.title)}</b><small>▶ ${t('watch')}</small></div>`).join('')||`<p>${t('none')}</p>`}</div>`}
-
-if(v==='teachers'){
-  if(isAdmin()){h+=`<h2>${t('teachers')}</h2><button class="btn" onclick="teacherForm()">＋ ${t('addT')}</button>${D.teachers.map(x=>`<div class="row"><div class="who">${av(x)}<div><b>${esc(x.name)}</b>${x.id===S.user.id?` <span class="badge">${t('mainT')}</span>`:''}<div class="sm">${t('sCount')}: <b id="cnt_${esc(x.id)}">…</b></div></div></div><div><button class="btn g s" onclick="teacherForm('${esc(x.id)}')">✏️ ${t('editT')}</button>${x.id!==S.user.id?` <button class="btn s" onclick="delTeacher('${esc(x.id)}')">🗑</button>`:''}</div></div>`).join('')||`<p>${t('noT')}</p>`}`}
-  else{h+=`<h2>${t('availT')}</h2><p class="sm">${t('pickT')}</p>${D.teachers.map(x=>{const j=(S.user.teachers||[]).includes(x.id),p=D.myReqs.some(r=>r.teacherId===x.id);return `<div class="row"><div class="who">${av(x)}<b>${esc(x.name)}</b></div><div>${j?`<span class="badge g">${t('joined')}</span>`:p?`<span class="sm">${t('pending')}</span> <button class="btn g s" onclick="cancelReq('${esc(x.id)}')">✖</button>`:`<button class="btn p" onclick="sendReq('${esc(x.id)}')">${t('joinReq')}</button>`}</div></div>`}).join('')||`<p>${t('noT')}</p>`}`}
-}
-
-if(v==='lessons')h+=`<h2>${t('lessons')}</h2>${T_?`<button class="btn" onclick="addLesson()">＋ ${t('addL')}</button>`:''}${ls.map(l=>`<div class="row"><b>📘 ${esc(l.title)}</b><div>${watch(l)}${T_?` <button class="btn" onclick="delItem('lessons','${esc(l.id)}')">🗑 ${t('del')}</button>`:''}</div></div>`).join('')||`<p>${t('none')}</p>`}`;
-
-if(v==='exams'){h+=`<h2>${t('exams')}</h2>${T_?`<button class="btn" onclick="addExam()">＋ ${t('addE')}</button>`:''}`;
-  h+=[...D.exams].sort(byNew).map(e=>{
-    const mine=D.subs.filter(s=>s.examId===e.id);
-    if(T_)return `<div class="row"><div><b>📄 ${esc(e.title)}</b><div class="sm">${new Date(e.end).toLocaleString()} · ${e.dur}m · ${e.tries} ${t('attempts')} · ${(e.qs||[]).length} ?</div></div><div><button class="btn p s" onclick="review('${esc(e.id)}')">${t('answers')} (${mine.length})</button> <button class="btn s" onclick="delItem('exams','${esc(e.id)}')">🗑</button></div></div>`;
-    const gr=[...mine].filter(s=>s.grade!=null).sort((a,b)=>tsec(b.at)-tsec(a.at))[0],tc=D.teachers.find(x=>x.id===e.teacherId);
-    return `<div class="row"><div><b>📄 ${esc(e.title)}</b>${tc?` <span class="sm">· ${esc(tc.name)}</span>`:''}<div class="sm">${new Date(e.end).toLocaleString()} · ${e.dur}m · ${t('attempts')}: ${mine.length}/${e.tries}</div>${gr?`<div class="ok">${t('yourGrade')}: <b>${esc(gr.grade)}</b>${gr.comment?' — '+esc(gr.comment):''}</div>`:mine.length?`<div class="sm">${t('waiting')}</div>`:''}</div><div><button class="btn p" onclick="startExam('${esc(e.id)}')">${t('start')}</button></div></div>`}).join('')||`<p>${t('none')}</p>`}
-
-if(v==='perf'){const subs=[...D.subs].sort((a,b)=>tsec(b.at)-tsec(a.at));h+=`<h2>${t('perf')}</h2><div class="grid"><div class="tile">📖<h2>${ls.length}</h2>${t('lessons')}</div><div class="tile">📄<h2>${subs.length}</h2>${t('exams')}</div></div><h3>${t('exams')}</h3>${subs.map(s=>{const e=D.exams.find(x=>x.id===s.examId);return `<div class="row"><div><b>${esc(e?e.title:'')}</b><div class="sm">${esc(tstr(s.at))}</div></div><div>${s.grade!=null?`<span class="badge g">${t('yourGrade')}: ${esc(s.grade)}</span>${s.comment?`<div class="sm">${esc(s.comment)}</div>`:''}`:`<span class="sm">${t('waiting')}</span>`}</div></div>`}).join('')||`<p>${t('none')}</p>`}`}
-
-if(v==='set')h+=`<h2>${t('set')}</h2><div class="row"><b>${t('lang')}</b><select style="width:auto" onchange="S.lang=this.value;LS.s('lang',S.lang);R()"><option value="ar" ${S.lang==='ar'?'selected':''}>العربية</option><option value="en" ${S.lang==='en'?'selected':''}>English</option></select></div><div class="row"><b>${t('theme')}</b><div><button class="btn g" onclick="S.theme='light';LS.s('theme','light');R()">☀️ ${t('light')}</button> <button class="btn g" onclick="S.theme='dark';LS.s('theme','dark');R()">🌙 ${t('dark')}</button></div></div>${T_?`<div class="row"><b>${t('myProfile')}</b><button class="btn p" onclick="teacherForm('${esc(S.user.id)}')">✏️</button></div>`:''}<h3>🔒 ${t('cp')}</h3><input id="oldpw" type="password" autocomplete="current-password" placeholder="${t('cpOld')}"><input id="newpw" type="password" autocomplete="new-password" placeholder="${t('cpNew')}"><input id="confpw" type="password" autocomplete="new-password" placeholder="${t('cpConf')}"><div class="err" id="pwerr"></div><button class="btn p" onclick="changePassword()">${t('cpSave')}</button>`;
-
-if(v==='students')h+=`<h2>${t('myStudents')} (${D.students.length})</h2>${D.reqs.length?`<h3>📨 ${t('reqs')} (${D.reqs.length})</h3>${D.reqs.map(r=>`<div class="row"><b>${esc(r.name)}</b><div><button class="btn p s" onclick="acceptReq('${esc(r.id)}')">${t('accept')}</button> <button class="btn s" onclick="rejectReq('${esc(r.id)}')">${t('reject')}</button></div></div>`).join('')}`:''}<div class="sbar">🔍<input id="sq" value="${esc(S.sq)}" placeholder="${t('searchS')}" oninput="S.sq=this.value;drawStudents()"></div><div id="st">${stList(S.sq)}</div>`;
+if(v==='home')h+=`<div class="sbar">🔍<input id="q" value="${esc(S.q)}" placeholder="${t('search')}" oninput="S.q=this.value;doSearch()"></div><div id="res"></div><div class="banner">${t('dream')}</div><h3>${t('latest')}</h3><div class="grid">${ls.map(l=>`<div class="sq" onclick="view('${esc(l.id)}')"><span>📘</span><b>${esc(l.title)}</b><small>▶ ${t('watch')}</small></div>`).join('')||`<p>${t('none')}</p>`}</div>`;
+if(v==='lessons')h+=`<h2>${t('lessons')}</h2>${isT()?`<button class="btn" onclick="addLesson()">＋ ${t('addL')}</button>`:''}${ls.map(l=>`<div class="row"><b>📘 ${esc(l.title)}</b><div>${watch(l)}${isT()?` <button class="btn" onclick="delItem('lessons','${esc(l.id)}')">🗑 ${t('del')}</button>`:''}</div></div>`).join('')||`<p>${t('none')}</p>`}`;
+if(v==='exams')h+=`<h2>${t('exams')}</h2>${isT()?`<button class="btn" onclick="addExam()">＋ ${t('addE')}</button>`:''}${D.exams.map(e=>`<div class="row"><div><b>📄 ${esc(e.title)}</b><div class="sm">${new Date(e.end).toLocaleString()} · ${e.dur}m · ${e.tries} ${t('tr')}</div></div><div><button class="btn p" onclick="takeExam('${esc(e.id)}')">${t('open')}</button>${isT()?` <button class="btn" onclick="delItem('exams','${esc(e.id)}')">🗑 ${t('del')}</button>`:''}</div></div>`).join('')||`<p>${t('none')}</p>`}`;
+if(v==='perf'){const n=Object.keys(D.att).filter(k=>k.startsWith(S.user.id+':')).reduce((s,k)=>s+D.att[k],0);h+=`<h2>${t('perf')}</h2><div class="grid"><div class="sq"><span>📖</span><b>${t('lessons')}</b><h2>${ls.length}</h2></div><div class="sq"><span>📄</span><b>${t('exams')}</b><h2>${n}</h2></div></div>`}
+if(v==='set')h+=`<h2>${t('set')}</h2><div class="row"><b>${t('lang')}</b><select style="width:auto" onchange="S.lang=this.value;LS.s('lang',S.lang);R()"><option value="ar" ${S.lang==='ar'?'selected':''}>العربية</option><option value="en" ${S.lang==='en'?'selected':''}>English</option></select></div><div class="row"><b>${t('theme')}</b><div><button class="btn g" onclick="S.theme='light';LS.s('theme','light');R()">☀️ ${t('light')}</button> <button class="btn g" onclick="S.theme='dark';LS.s('theme','dark');R()">🌙 ${t('dark')}</button></div></div><h3>🔒 ${t('cp')}</h3><input id="oldpw" type="password" autocomplete="current-password" placeholder="${t('cpOld')}"><input id="newpw" type="password" autocomplete="new-password" placeholder="${t('cpNew')}"><input id="confpw" type="password" autocomplete="new-password" placeholder="${t('cpConf')}"><div class="err" id="pwerr"></div><button class="btn p" onclick="changePassword()">${t('cpSave')}</button>`;
+if(v==='students')h+=`<h2>${t('students')} <small id="cnt"></small></h2><div class="sbar">🔍<input id="sq" placeholder="${t('searchS')}" oninput="stFilter(this.value)"></div><div id="st">${t('loading')}</div>`;
 return h+'</div>'}
 
 /* ---------- students (teacher) ---------- */
-function stList(q){const f=D.students.filter(u=>[u.fn,u.sn,u.fam,u.username,u.gm,u.ph].join(' ').toLowerCase().includes((q||'').toLowerCase()));
-return f.map(u=>{const b=u.ban&&u.ban>Date.now();const names=D.lessons.filter(l=>(l.allowed||[]).includes(u.id)).map(l=>esc(l.title)).join('، ');
-return `<div class="row" style="align-items:flex-start"><div style="flex:1;min-width:220px"><b>${esc(u.fn)} ${esc(u.sn)} ${esc(u.fam)}</b><div class="sm" style="line-height:1.9">🎓 ${esc(u.gr)}<br>📱 ${esc(u.ph)} · 👨 ${esc(u.fp)} · 👩 ${esc(u.mp)}<br>✉️ ${esc(u.gm||u.email)} · 👤 ${esc(u.username)}<br>${t('joinedAt')}: ${esc(tstr(u.createdAt))}<br>${t('allowedN')}: ${names||'—'}${b?`<br><span style="color:var(--red)">${t('banned')} ${new Date(u.ban).toLocaleString()}</span>`:''}</div></div><div style="display:grid;gap:6px"><button class="btn p s" onclick="allow('${esc(u.id)}')">＋ ${t('lessons')}</button><button class="btn s" onclick="ban('${esc(u.id)}')">${b?t('unban'):'⛔ '+t('ban')}</button><button class="btn g s" onclick="resetPw('${esc(u.id)}')">🔑 ${t('resetPw')}</button></div></div>`}).join('')||`<p>${t('nf')}</p>`}
-function drawStudents(){const c=$('#st');if(c)c.innerHTML=stList(S.sq)}
-function allow(sid){const u=D.students.find(x=>x.id===sid);if(!u)return;
-modal(`<h3>${t('allow')}</h3><div class="sm">${esc(u.fn)} ${esc(u.fam)}</div>${[...D.lessons].sort(byNew).map(l=>`<label class="row"><span>${esc(l.title)}</span><input type="checkbox" style="width:auto" ${(l.allowed||[]).includes(sid)?'checked':''} onchange="tog('${esc(sid)}','${esc(l.id)}',this)"></label>`).join('')||`<p>${t('none')}</p>`}`)}
-async function tog(sid,lid,box){try{await fsdb.collection('lessons').doc(lid).update({allowed:box.checked?FV.arrayUnion(sid):FV.arrayRemove(sid)});const l=D.lessons.find(x=>x.id===lid);l.allowed=(l.allowed||[]).filter(i=>i!==sid);if(box.checked)l.allowed.push(sid)}catch(e){console.error(e);box.checked=!box.checked;alert(t('errG')+' '+(e.code||''))}}
-async function ban(uid){const u=D.students.find(x=>x.id===uid);const nb=(u.ban&&u.ban>Date.now())?0:Date.now()+864e5;
-  try{await fsdb.collection('users').doc(uid).update({ban:nb});u.ban=nb;drawStudents()}catch(e){console.error(e);alert(t('errG')+' '+(e.code||''))}}
-async function resetPw(uid){const u=D.students.find(x=>x.id===uid);const em=u&&(u.gm||u.email);if(!em)return;
-  try{await auth.sendPasswordResetEmail(em);modal(`<p class="ok">${t('resetSent')}</p><p class="sm">${esc(em)}<br>${t('explain')}</p>`)}catch(e){console.error(e);alert(t('errG')+' '+(e.code||''))}}
-async function acceptReq(rid){const r=D.reqs.find(x=>x.id===rid);if(!r)return;
-  try{await fsdb.collection('users').doc(r.studentId).update({teachers:FV.arrayUnion(S.user.id)});await fsdb.collection('requests').doc(rid).delete()}catch(e){console.error(e);alert(t('errG')+' '+(e.code||''))}}
-async function rejectReq(rid){try{await fsdb.collection('requests').doc(rid).delete()}catch(e){console.error(e)}}
-async function sendReq(tid){try{await fsdb.collection('requests').doc(S.user.id+'_'+tid).set({studentId:S.user.id,teacherId:tid,name:fullName(),createdAt:FV.serverTimestamp()})}catch(e){console.error(e);alert(t('errG')+' '+(e.code||''))}}
-async function cancelReq(tid){try{await fsdb.collection('requests').doc(S.user.id+'_'+tid).delete()}catch(e){console.error(e)}}
-
-/* ---------- teachers (admin) ---------- */
-async function loadCounts(){await Promise.all(D.teachers.map(async x=>{try{const s=await fsdb.collection('users').where('teachers','array-contains',x.id).get();const el=document.getElementById('cnt_'+x.id);if(el)el.textContent=s.size}catch(e){console.error(e)}}))}
-function imgToData(file,max=200){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));c.getContext('2d').drawImage(im,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',.8))};im.onerror=rej;im.src=r.result};r.onerror=rej;r.readAsDataURL(file)})}
-function teacherForm(tid){const x=tid?D.teachers.find(z=>z.id===tid):null;
-modal(`<h3>${tid?t('editT'):t('addT')}</h3><input id="tn" placeholder="${t('tname')}" value="${esc(x?x.name:'')}">${tid?'':`<input id="te" type="email" dir="ltr" placeholder="${t('temail')}"><input id="tp" type="password" placeholder="${t('tpass')}">`}<label class="sm">${t('photo')}</label><input id="tf" type="file" accept="image/*"><div class="err" id="terr"></div><button class="btn" onclick="saveTeacher(this,'${esc(tid||'')}')">${t('save')}</button>`)}
-async function saveTeacher(b,tid){const name=$('#tn').value.trim(),msg=$('#terr'),f=$('#tf').files[0];if(!name){msg.textContent=t('req');return}
-  b.disabled=true;
-  try{let photo=tid?((D.teachers.find(z=>z.id===tid)||{}).photo||''):'';if(f)photo=await imgToData(f);
-    if(tid){await fsdb.collection('teachers').doc(tid).update({name,photo});if(tid===S.user.id)S.user.name=name}
-    else{const em=$('#te').value.trim().toLowerCase(),pw=$('#tp').value;if(!/^\S+@\S+\.\S+$/.test(em)||pw.length<6){msg.textContent=t('req');b.disabled=false;return}
-      const sec=firebase.apps.find(a=>a.name==='sec')||firebase.initializeApp(firebaseConfig,'sec');
-      const c=await sec.auth().createUserWithEmailAndPassword(em,pw);const uid=c.user.uid;await sec.auth().signOut();
-      const bt=fsdb.batch();bt.set(fsdb.collection('users').doc(uid),{uid,role:'t',name,email:em,ban:0,createdAt:FV.serverTimestamp()});bt.set(fsdb.collection('teachers').doc(uid),{uid,name,photo,createdAt:FV.serverTimestamp()});await bt.commit();
-      b.closest('.mod').remove();modal(`<p class="ok">${t('tAdded')}</p><p dir="ltr"><b>${esc(em)}</b></p>`);return}
-    b.closest('.mod').remove();R()
-  }catch(e){console.error(e);msg.textContent=(e.code==='auth/email-already-in-use'?(S.lang==='ar'?'الإيميل مستخدم من قبل':'Email already used'):t('errG')+' '+(e.code||e.message));b.disabled=false}}
-async function delTeacher(tid){if(!confirm(t('confirmDel')))return;try{const bt=fsdb.batch();bt.delete(fsdb.collection('teachers').doc(tid));bt.delete(fsdb.collection('users').doc(tid));await bt.commit()}catch(e){console.error(e);alert(t('errG')+' '+(e.code||''))}}
+let studentCache=[],stQ='';
+async function loadStudents(){
+  if(!$('#st')||!isT())return;
+  try{
+    const snap=await fsdb.collection('users').get();
+    studentCache=snap.docs.map(d=>({...d.data(),id:d.id,ok:d.data().ok||[]})).filter(u=>u.role==='s');
+    drawStudents();
+  }catch(err){console.error(err);const c=$('#st');if(c)c.textContent=S.lang==='ar'?'تعذر تحميل الطلاب. تأكد من نشر قواعد Firestore.':'Could not load students. Publish the Firestore rules.'}
+}
+function drawStudents(){const c=$('#st');if(c)c.innerHTML=stList(stQ);const n=$('#cnt');if(n)n.textContent='('+studentCache.length+')'}
+function stFilter(q){stQ=q;drawStudents()}
+function stList(q){const f=studentCache.filter(u=>[u.fn,u.sn,u.fam,u.username,u.gm,u.ph].join(' ').toLowerCase().includes(q.toLowerCase()));
+return f.map(u=>{const b=u.ban&&u.ban>Date.now();const j=u.createdAt&&u.createdAt.toDate?u.createdAt.toDate().toLocaleDateString():'';
+const names=u.ok.map(id=>{const l=D.lessons.find(x=>x.id===id);return l?esc(l.title):null}).filter(Boolean).join('، ');
+return `<div class="row" style="align-items:flex-start"><div style="flex:1;min-width:220px"><b>${esc(u.fn)} ${esc(u.sn)} ${esc(u.fam)}</b><div class="sm" style="line-height:1.9">🎓 ${esc(u.gr)}<br>📱 ${esc(u.ph)} · 👨 ${esc(u.fp)} · 👩 ${esc(u.mp)}<br>✉️ ${esc(u.gm||u.email)} · 👤 ${esc(u.username)}<br>${t('joined')}: ${esc(j)}<br>${t('allowedN')} (${u.ok.length}): ${names||'—'}${b?`<br><span style="color:var(--red)">${t('banned')} ${new Date(u.ban).toLocaleString()}</span>`:''}</div></div><div><button class="btn p" onclick="allow('${esc(u.id)}')">＋ ${S.lang==='ar'?'الدروس':'Lessons'}</button> <button class="btn" onclick="ban('${esc(u.id)}')">${b?t('unban'):'⛔ '+t('ban')}</button></div></div>`}).join('')||`<p>${t('nf')}</p>`}
+function allow(uid){const u=studentCache.find(x=>x.id===uid);if(!u)return;
+modal(`<h3>${t('allow')}</h3><div class="sm">${esc(u.fn)} ${esc(u.fam)}</div>${[...D.lessons].sort(byNew).map(l=>`<label class="row"><span>${esc(l.title)}</span><input type="checkbox" style="width:auto" ${u.ok.includes(l.id)?'checked':''} onchange="tog('${esc(uid)}','${esc(l.id)}',this)"></label>`).join('')||`<p>${t('none')}</p>`}`)}
+async function tog(uid,lid,box){const u=studentCache.find(x=>x.id===uid);const next=u.ok.filter(i=>i!==lid);if(box.checked)next.push(lid);
+  try{await fsdb.collection('users').doc(uid).update({ok:next});u.ok=next;drawStudents()}catch(e){console.error(e);box.checked=!box.checked;alert((S.lang==='ar'?'تعذر الحفظ: ':'Could not save: ')+(e.code||e.message))}}
+async function ban(uid){const u=studentCache.find(x=>x.id===uid);const nb=(u.ban&&u.ban>Date.now())?0:Date.now()+864e5;
+  try{await fsdb.collection('users').doc(uid).update({ban:nb});u.ban=nb;drawStudents()}catch(e){console.error(e);alert(e.code||e.message)}}
 
 /* ---------- auth ---------- */
 function authMessage(err){const c=err.code||'';
@@ -178,12 +131,12 @@ function authMessage(err){const c=err.code||'';
   if(c==='auth/invalid-email')return S.lang==='ar'?'البريد الإلكتروني غير صحيح':'Invalid email address';
   if(c==='auth/email-already-in-use')return S.lang==='ar'?'البريد الإلكتروني مسجل بالفعل':'Email already registered';
   if(c==='auth/too-many-requests')return S.lang==='ar'?'محاولات كثيرة؛ حاول لاحقًا':'Too many attempts; try later';
-  if(c==='auth/operation-not-allowed')return S.lang==='ar'?'فعّل Email/Password من Firebase ← Authentication':'Enable Email/Password in Firebase Authentication';
+  if(c==='auth/operation-not-allowed')return S.lang==='ar'?'فعّل Email/Password من Firebase ← Authentication ← Sign-in method':'Enable Email/Password in Firebase Authentication';
   if(c==='auth/unauthorized-domain')return S.lang==='ar'?'ضيف دومين الموقع في Authentication ← Settings ← Authorized domains':'Add this domain in Authorized domains';
   if(c==='auth/network-request-failed')return S.lang==='ar'?'تحقق من الإنترنت':'Check your connection';
   return (S.lang==='ar'?'حدث خطأ: ':'Error: ')+(c||err.message);}
 async function doLogin(){
-  const e=$('#e');e.textContent='';const u=$('#u').value.trim().toLowerCase(),p=$('#p').value;
+  const e=$('#e');e.textContent='';let u=$('#u').value.trim().toLowerCase();const p=$('#p').value;
   const email=u==='1112'?TEACHER:u;if(!email||p.length<6){e.textContent=t('bad');return}
   let cred;
   try{cred=await auth.signInWithEmailAndPassword(email,p)}
@@ -197,7 +150,7 @@ async function gLogin(){
   const e=$('#e');
   try{
     const r=await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());const user=r.user,ref=fsdb.collection('users').doc(user.uid);
-    if(!(await ref.get()).exists)await ref.set({uid:user.uid,email:user.email||'',fn:user.displayName||'',sn:'',fam:'',gr:'',fp:'',mp:'',ph:'',username:'',gm:(user.email||'').toLowerCase(),role:'s',teachers:[],ban:0,createdAt:FV.serverTimestamp()});
+    if(!(await ref.get()).exists)await ref.set({uid:user.uid,email:user.email||'',fn:user.displayName||'',gm:(user.email||'').toLowerCase(),role:'s',ok:[],ban:0,createdAt:firebase.firestore.FieldValue.serverTimestamp()});
     await afterLogin(user);
   }catch(err){if(e)e.textContent=authMessage(err);console.error(err)}
 }
@@ -206,44 +159,32 @@ async function doSignup(){
   if(ids.some(i=>!v[i])||v.p.length<6||!/^\S+@\S+\.\S+$/.test(v.gm)){e.textContent=t('req');return}
   try{
     const cred=await auth.createUserWithEmailAndPassword(v.gm.toLowerCase(),v.p);
-    await fsdb.collection('users').doc(cred.user.uid).set({uid:cred.user.uid,fn:v.fn,sn:v.sn,fam:v.fam,gr:v.gr,fp:v.fp,mp:v.mp,ph:v.ph,gm:v.gm.toLowerCase(),username:v.u,role:'s',teachers:[],ban:0,createdAt:FV.serverTimestamp()});
+    await fsdb.collection('users').doc(cred.user.uid).set({uid:cred.user.uid,fn:v.fn,sn:v.sn,fam:v.fam,gr:v.gr,fp:v.fp,mp:v.mp,ph:v.ph,gm:v.gm.toLowerCase(),username:v.u,role:'s',ok:[],ban:0,createdAt:firebase.firestore.FieldValue.serverTimestamp()});
     await afterLogin(cred.user);
   }catch(err){e.textContent=authMessage(err);console.error(err)}
 }
-function stop(){[...unsubs,...examUnsubs].forEach(f=>{try{f()}catch(e){}});unsubs=[];examUnsubs=[];examKey='';
-  Object.assign(D,{lessons:[],exams:[],students:[],reqs:[],subs:[],teachers:[],myReqs:[],examsBy:{},counts:{}})}
 async function afterLogin(user){
   stop();
-  if(user.email===TEACHER){
-    S.user={id:user.uid,role:'t',admin:true,email:user.email,name:t('mainT')};
-    try{const tr=fsdb.collection('teachers').doc(user.uid),s=await tr.get();if(!s.exists)await tr.set({uid:user.uid,name:t('mainT'),photo:'',createdAt:FV.serverTimestamp()});else S.user.name=s.data().name}catch(e){console.error(e)}
-    S.view='home';startTeacher();R();return}
-  let p=null;try{const s=await fsdb.collection('users').doc(user.uid).get();p=s.exists?s.data():null}catch(err){console.error(err)}
-  if(!p){await auth.signOut();S.view='login';R();const e=$('#e');if(e)e.textContent=t('bad');return}
+  if(user.email===TEACHER){S.user={id:user.uid,role:'t',email:user.email};S.view='home';startTeacher();R();return}
+  let p={};try{const s=await fsdb.collection('users').doc(user.uid).get();p=s.exists?s.data():{}}catch(err){console.error(err)}
   if(p.ban&&p.ban>Date.now()){await auth.signOut();S.view='login';R();const e=$('#e');if(e)e.textContent=t('banned')+' '+new Date(p.ban).toLocaleString();return}
-  if(p.role==='t'){S.user={...p,id:user.uid,role:'t',admin:false};S.view='home';startTeacher();R();return}
-  S.user={...p,id:user.uid,email:user.email||'',role:'s',teachers:p.teachers||[]};S.view='home';startStudent();R();
+  S.user={...p,id:user.uid,email:user.email||'',role:'s',ok:p.ok||[]};S.view='home';startStudent();R();
 }
-function on(q,fn){unsubs.push(q.onSnapshot(fn,e=>console.error('listener',e)))}
-function startTeacher(){const me=S.user.id,c=n=>fsdb.collection(n);
-  on(c('lessons').where('teacherId','==',me),s=>{D.lessons=s.docs.map(mk);rerender()});
-  on(c('users').where('teachers','array-contains',me),s=>{D.students=s.docs.map(mk);rerender()});
-  on(c('requests').where('teacherId','==',me),s=>{D.reqs=s.docs.map(mk);rerender()});
-  on(c('exams').where('teacherId','==',me),s=>{D.exams=s.docs.map(mk);rerender()});
-  on(c('submissions').where('teacherId','==',me),s=>{D.subs=s.docs.map(mk);rerender()});
-  on(c('teachers'),s=>{D.teachers=s.docs.map(mk);rerender()});
+function stop(){[lessonUnsub,examUnsub,selfUnsub].forEach(f=>f&&f());lessonUnsub=examUnsub=selfUnsub=null}
+function startExams(){examUnsub=fsdb.collection('exams').onSnapshot(s=>{D.exams=s.docs.map(d=>({...d.data(),id:d.id}));rerender()},e=>console.error('exams',e))}
+function startTeacher(){lessonUnsub=fsdb.collection('lessons').onSnapshot(s=>{D.lessons=s.docs.map(d=>({...d.data(),id:d.id}));rerender()},e=>console.error('lessons',e));startExams()}
+function startStudent(){
+  selfUnsub=fsdb.collection('users').doc(S.user.id).onSnapshot(async s=>{
+    const d=s.data()||{};
+    if(d.ban&&d.ban>Date.now()){await logout();return}
+    S.user={...S.user,...d,role:'s',ok:d.ok||[]};
+    const docs=await Promise.all(S.user.ok.map(id=>fsdb.collection('lessons').doc(id).get().catch(()=>null)));
+    D.lessons=docs.filter(x=>x&&x.exists).map(x=>({...x.data(),id:x.id}));rerender();
+  },e=>console.error('self',e));
+  startExams();
 }
-function startStudent(){const me=S.user.id,c=n=>fsdb.collection(n);
-  on(c('users').doc(me),async s=>{const d=s.data()||{};if(d.ban&&d.ban>Date.now()){await logout();return}S.user={...S.user,...d,id:me,role:'s',teachers:d.teachers||[]};watchExams();rerender()});
-  on(c('lessons').where('allowed','array-contains',me),s=>{D.lessons=s.docs.map(mk);rerender()});
-  on(c('requests').where('studentId','==',me),s=>{D.myReqs=s.docs.map(mk);rerender()});
-  on(c('submissions').where('studentId','==',me),s=>{D.subs=s.docs.map(mk);rerender()});
-  on(c('teachers'),s=>{D.teachers=s.docs.map(mk);rerender()});
-}
-function watchExams(){const key=(S.user.teachers||[]).join(',');if(key===examKey)return;examKey=key;examUnsubs.forEach(f=>f());examUnsubs=[];D.examsBy={};D.exams=[];
-  (S.user.teachers||[]).forEach(tid=>{examUnsubs.push(fsdb.collection('exams').where('teacherId','==',tid).onSnapshot(s=>{D.examsBy[tid]=s.docs.map(mk);D.exams=[].concat(...Object.values(D.examsBy));rerender()},e=>console.error('exams',e)))})}
-function rerender(){if(!S.user||document.querySelector('.mod'))return;if(['INPUT','TEXTAREA','SELECT'].includes((document.activeElement||{}).tagName))return;R()}
-async function logout(){stop();try{await auth.signOut()}catch(e){console.error(e)}S.user=null;S.view='intro';R()}
+function rerender(){if(S.user&&['home','lessons','exams','perf'].includes(S.view)&&!document.querySelector('.mod'))R()}
+async function logout(){stop();try{await auth.signOut()}catch(e){console.error(e)}S.user=null;D.lessons=[];D.exams=[];S.view='intro';R()}
 async function changePassword(){
   const msg=$('#pwerr'),old=$('#oldpw').value,next=$('#newpw').value,conf=$('#confpw').value,ar=S.lang==='ar';msg.className='err';msg.textContent='';
   if(!old||!next||!conf){msg.textContent=ar?'املأ كل الحقول.':'Fill in all fields.';return}
@@ -262,49 +203,28 @@ const ls=D.lessons,hit=ls.filter(l=>String(l.title).toLowerCase().includes(q));l
 if(!hit.length&&ls.length){const best=ls.map(l=>({l,d:Math.min(...String(l.title).toLowerCase().split(/\s+/).map(w=>lev(q,w)))})).sort((a,b)=>a.d-b.d)[0];out=[best.l];note=t('best')+': '}
 r.innerHTML=out.map(l=>`<div class="row"><b>${note}📘 ${esc(l.title)}</b><button class="btn p" onclick="view('${esc(l.id)}')">▶ ${t('watch')}</button></div>`).join('')||`<p>${t('nf')}</p>`}
 function modal(h){const m=document.createElement('div');m.className='mod';m.innerHTML=`<div>${h}<p><button class="btn g" onclick="this.closest('.mod').remove();rerender()">${t('close')}</button></p></div>`;document.body.appendChild(m);return m}
-function view(id){const l=D.lessons.find(x=>String(x.id)===String(id));if(!l)return;if(/^https?:\/\//i.test(l.url||''))window.open(l.url,'_blank','noopener,noreferrer')}
-function addLesson(){modal(`<h3>${t('addL')}</h3>${field('lt','title')}<label class="sm">${t('link')||''}</label><input id="lu" type="url" dir="ltr" placeholder="https://youtu.be/..."><div class="err" id="lessonerr"></div><button class="btn" onclick="saveLesson(this)">${t('save')}</button>`)}
+function view(id){const l=D.lessons.find(x=>String(x.id)===String(id));if(!l)return;
+  if(/^https?:\/\//i.test(l.url||''))window.open(l.url,'_blank','noopener,noreferrer')}
+function addLesson(){const ar=S.lang==='ar';modal(`<h3>${t('addL')}</h3>${field('lt','title')}<label class="sm">${ar?'رابط الدرس (يوتيوب أو أي رابط)':'Lesson link (YouTube or any link)'}</label><input id="lu" type="url" dir="ltr" placeholder="https://youtu.be/..."><div class="err" id="lessonerr"></div><button class="btn" onclick="saveLesson(this)">${t('save')}</button>`)}
 async function saveLesson(b){
-  const ti=$('#lt').value.trim(),url=$('#lu').value.trim(),msg=$('#lessonerr'),ar=S.lang==='ar';
+  const ar=S.lang==='ar',ti=$('#lt').value.trim(),url=$('#lu').value.trim(),msg=$('#lessonerr');
   if(!ti){msg.textContent=ar?'اكتب عنوان الدرس.':'Enter a title.';return}
   if(!/^https?:\/\//i.test(url)){msg.textContent=ar?'الصق رابط الدرس (يبدأ بـ https://).':'Paste the link (starts with https://).';return}
   b.disabled=true;
-  try{await fsdb.collection('lessons').doc(String(Date.now())).set({title:ti,url,teacherId:S.user.id,allowed:[],createdAt:FV.serverTimestamp()});b.closest('.mod').remove();rerender()}
-  catch(err){console.error(err);msg.textContent=t('errG')+' '+(err.code||err.message);b.disabled=false}
+  try{const id=String(Date.now());await fsdb.collection('lessons').doc(id).set({title:ti,url,createdAt:firebase.firestore.FieldValue.serverTimestamp()});b.closest('.mod').remove();R()}
+  catch(err){console.error(err);msg.textContent=(ar?'فشل الحفظ: ':'Save failed: ')+(err.code||err.message);b.disabled=false}
 }
-async function delItem(k,id){if(!confirm(t('confirmDel')))return;try{await fsdb.collection(k).doc(String(id)).delete()}catch(err){console.error(err);alert(t('errG')+' '+(err.code||err.message))}}
+async function delItem(k,id){if(!confirm(t('del')+'؟'))return;try{await fsdb.collection(k).doc(String(id)).delete()}catch(err){console.error(err);alert((S.lang==='ar'?'تعذر الحذف: ':'Could not delete: ')+(err.code||err.message))}}
 
 /* ---------- exams ---------- */
-const qBlock=()=>`<div class="qb"><textarea class="qt" rows="2" placeholder="${t('qText')}"></textarea><label class="sm"><input type="checkbox" class="qm" style="width:auto" onchange="this.closest('.qb').querySelector('.qo').style.display=this.checked?'block':'none'"> ${t('mcq4')}</label><div class="qo" style="display:none">${[1,2,3,4].map(i=>`<input class="qopt" placeholder="${t('choice')} ${i}">`).join('')}</div><button type="button" class="btn g s" onclick="this.closest('.qb').remove()">🗑</button></div>`;
-function addExam(){modal(`<h3>${t('addE')}</h3>${field('et','title')}<label class="sm">${t('end')}</label><input id="ee" type="datetime-local">${field('ed','dur','number')}${field('en','tries','number')}<button type="button" class="btn p" style="width:100%;margin:8px 0" onclick="toggleQ()">📝 ${t('setQ')}</button><div id="qwrap" style="display:none"><div id="qs"></div><button type="button" class="btn g" onclick="document.getElementById('qs').insertAdjacentHTML('beforeend',qBlock())">${t('addQ')}</button></div><div class="err" id="examerr"></div><button class="btn" onclick="saveExam(this)">${t('save')}</button>`)}
-function toggleQ(){const w=$('#qwrap');w.style.display=w.style.display==='none'?'block':'none';if(w.style.display==='block'&&!$('#qs').children.length)$('#qs').insertAdjacentHTML('beforeend',qBlock())}
-async function saveExam(b){const msg=$('#examerr'),x={title:$('#et').value.trim(),end:new Date($('#ee').value).getTime(),dur:+$('#ed').value,tries:+$('#en').value};
+function addExam(){modal(`<h3>${t('addE')}</h3>${field('et','title')}<label class="sm">${t('end')}</label><input id="ee" type="datetime-local">${field('ed','dur','number')}${field('en','tries','number')}<div class="err" id="examerr"></div><button class="btn" onclick="saveExam(this)">${t('save')}</button>`)}
+async function saveExam(b){const x={title:$('#et').value.trim(),end:new Date($('#ee').value).getTime(),dur:+$('#ed').value,tries:+$('#en').value,createdAt:firebase.firestore.FieldValue.serverTimestamp()},msg=$('#examerr');
   if(!x.title||!x.end||!x.dur||!x.tries){msg.textContent=t('req');return}
-  const qs=[];for(const bl of document.querySelectorAll('#qs .qb')){const q=bl.querySelector('.qt').value.trim();if(!q){msg.textContent=t('qText');return}
-    let o=[];if(bl.querySelector('.qm').checked){o=[...bl.querySelectorAll('.qopt')].map(i=>i.value.trim());if(o.some(v=>!v)){msg.textContent=t('choice')+' ×4';return}}qs.push({q,o})}
-  b.disabled=true;
-  try{await fsdb.collection('exams').doc(String(Date.now())).set({...x,qs,teacherId:S.user.id,createdAt:FV.serverTimestamp()});b.closest('.mod').remove();rerender()}catch(e){console.error(e);msg.textContent=t('errG')+' '+(e.code||e.message);b.disabled=false}}
-function review(eid){const e=D.exams.find(x=>x.id===eid);if(!e)return;const subs=D.subs.filter(s=>s.examId===eid).sort((a,b)=>tsec(b.at)-tsec(a.at));
-  modal(`<h3>${esc(e.title)}</h3>${subs.map(s=>`<div class="q"><b>${esc(s.name)}</b> <span class="sm">${esc(tstr(s.at))}</span>${(e.qs||[]).map((q,i)=>`<div class="sm" style="margin:8px 0"><b>${i+1}. ${esc(q.q)}</b><br>↳ ${esc((s.answers||[])[i]||'—')}</div>`).join('')}<div style="display:flex;gap:6px;flex-wrap:wrap"><input id="g_${esc(s.id)}" type="number" step="any" placeholder="${t('gradeL')}" value="${s.grade!=null?esc(s.grade):''}" style="max-width:110px"><input id="c_${esc(s.id)}" placeholder="${t('comment')}" value="${esc(s.comment||'')}" style="flex:1;min-width:120px"><button class="btn p s" onclick="saveGrade('${esc(s.id)}',this)">${t('gsave')}</button></div></div>`).join('')||`<p>${t('noSubs')}</p>`}`)}
-async function saveGrade(sid,b){const g=parseFloat($('#g_'+sid).value),c=$('#c_'+sid).value.trim();if(isNaN(g)){alert(t('gradeL'));return}
-  try{await fsdb.collection('submissions').doc(sid).update({grade:g,comment:c});const s=D.subs.find(x=>x.id===sid);if(s){s.grade=g;s.comment=c}b.textContent='✓'}catch(e){console.error(e);alert(t('errG')+' '+(e.code||''))}}
-async function startExam(id){const e=D.exams.find(x=>x.id===id);if(!e)return;
-  if(Date.now()>e.end)return modal(`<p>${t('closed')}</p>`);
-  if(!(e.qs||[]).length)return modal(`<h3>${esc(e.title)}</h3><p>${t('noQ')}</p>`);
-  const sref=fsdb.collection('examState').doc(e.id+'_'+S.user.id);let n=0;
-  try{const s=await sref.get();n=s.exists?s.data().count:0}catch(err){console.error(err)}
-  if(n>=e.tries)return modal(`<p>${t('nomore')}</p>`);
-  const subId=fsdb.collection('submissions').doc().id;
-  try{n?await sref.update({count:n+1,lastSub:subId}):await sref.set({studentId:S.user.id,examId:e.id,count:1,lastSub:subId})}catch(err){console.error(err);return modal(`<p>${t('closed')}</p>`)}
-  const m=modal(`<h3>${esc(e.title)}</h3><p>${t('left')}: <b id="tm"></b></p>${e.qs.map((q,i)=>`<div class="q"><b>${i+1}. ${esc(q.q)}</b>${(q.o&&q.o.length)?q.o.map((o,j)=>`<label><input type="radio" name="a${i}" value="${j}"> ${esc(o)}</label>`).join(''):`<textarea id="ans${i}" rows="3"></textarea>`}</div>`).join('')}<button class="btn" id="sb">${t('submit')}</button>`);
-  let left=e.dur*60,done=false,iv;
-  const submit=async()=>{if(done)return;done=true;clearInterval(iv);
-    const answers=e.qs.map((q,i)=>{if(q.o&&q.o.length){const r=m.querySelector(`input[name=a${i}]:checked`);return r?q.o[+r.value]:''}return(m.querySelector('#ans'+i)||{value:''}).value.trim()});
-    try{await fsdb.collection('submissions').doc(subId).set({studentId:S.user.id,examId:e.id,teacherId:e.teacherId,name:fullName(),answers,at:FV.serverTimestamp()});m.querySelector('div').innerHTML=`<h3 class="ok">${t('sent')}</h3><button class="btn g" onclick="this.closest('.mod').remove();rerender()">${t('close')}</button>`}
-    catch(err){console.error(err);m.querySelector('div').innerHTML=`<p class="err">${t('errG')} ${esc(err.code||'')}</p><button class="btn g" onclick="this.closest('.mod').remove();rerender()">${t('close')}</button>`}};
-  iv=setInterval(()=>{if(!document.body.contains(m)){clearInterval(iv);return}const tm=$('#tm');if(tm)tm.textContent=Math.floor(left/60)+':'+String(left%60).padStart(2,'0');if(left--<=0)submit()},1000);
-  $('#sb').onclick=submit}
+  try{await fsdb.collection('exams').doc(String(Date.now())).set(x);b.closest('.mod').remove();R()}catch(e){console.error(e);msg.textContent=(e.code||e.message)}}
+function takeExam(id){const e=D.exams.find(x=>String(x.id)===String(id));if(!e)return;if(isT()){modal(`<h3>${esc(e.title)}</h3>`);return}
+  const k=S.user.id+':'+id,n=D.att[k]||0;if(Date.now()>e.end)return modal(`<p>${t('closed')}</p>`);if(n>=e.tries)return modal(`<p>${t('nomore')}</p>`);
+  D.att[k]=n+1;saveAtt();modal(`<h3>${esc(e.title)}</h3><p>${t('started')} ${e.dur}</p><p class="sm">${n+1} / ${e.tries}</p>`)}
 
 theme();R();
-auth.onAuthStateChanged(user=>{if(user){if(!S.user)afterLogin(user)}else if(S.user){stop();S.user=null;S.view='intro';R()}});
+auth.onAuthStateChanged(user=>{if(user){if(!S.user)afterLogin(user)}else if(S.user){S.user=null;S.view='intro';R()}});
 </script></body></html>
