@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>منصة ماناسا</title>
+<title>منصه علامك</title>
 <style>
 :root{--bg:#fff;--fg:#111;--card:#f4f4f6;--red:#8b0000;--pur:#6b3fa0;--bd:#ddd;--yel:#ffd400;box-sizing:border-box}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0d0d0f;--fg:#f2f2f2;--card:#1a1a1e;--bd:#333}}
@@ -84,7 +84,7 @@ if(S.view==='intro')h=tools()+`<div class="hero0"><h1><span>${t('hero')}</span><
 else if(S.view==='login')h=bar()+`<div class="box"><h2>${t('login')}</h2>${field('u','user','email')}${field('p','pass','password')}<label class="sm"><input type="checkbox" id="rm" style="width:auto"> ${t('rem')}</label><div class="err" id="e"></div><button class="btn" style="width:100%" onclick="doLogin()">${t('login')}</button><p style="text-align:center"><button class="btn g" style="width:100%" onclick="gLogin()">G&nbsp; ${t('google')}</button></p></div>`;
 else if(S.view==='signup')h=bar()+`<div class="box"><h2>${t('signup')}</h2>${field('fn','fn')}${field('sn','sn')}${field('fam','fam')}${field('gr','grade')}${field('fp','fp','tel')}${field('mp','mp','tel')}${field('ph','ph','tel')}${field('gm','gm','email')}${field('u','user','email')}${field('p','pass','password')}<div class="err" id="e"></div><button class="btn" style="width:100%" onclick="doSignup()">${t('signup')}</button></div>`;
 else h=app();
-a.innerHTML=h}
+a.innerHTML=h;if(S.view==='students'&&isT())loadStudents()}
 function app(){const v=S.view,ls=vis(),lat=[...ls].sort((x,y)=>y.id-x.id);
 const items=[['home','🏠'],['lessons','📖'],['exams','📄'],['perf','📈'],...(isT()?[['students','👥']]:[]),['set','⚙️']];
 let h=`<div class="top"><button class="ham" onclick="S.menu=true;R()"><i></i><i></i><i></i></button><span style="font-weight:900;color:var(--red)">${t('brand')}</span><button class="bell" onclick="S.bell=!S.bell;R()">🔔<b>${lat.length}</b></button></div>`;
@@ -95,12 +95,26 @@ if(v==='home'){h+=`<div class="sbar">🔍<input id="q" value="${S.q}" placeholde
 if(v==='lessons'){h+=`<h2>${t('lessons')}</h2>${isT()?`<button class="btn" onclick="addLesson()">＋ ${t('addL')}</button>`:''}${ls.map(l=>`<div class="row"><b>📘 ${l.title}</b><div><button class="btn p" onclick="view(${l.id})">${t('open')}</button>${isT()?` <button class="btn" onclick="delItem('lessons',${l.id})">🗑 ${t('del')}</button>`:''}</div></div>`).join('')||`<p>${t('none')}</p>`}`}
 if(v==='exams'){h+=`<h2>${t('exams')}</h2>${isT()?`<button class="btn" onclick="addExam()">＋ ${t('addE')}</button>`:''}${D.exams.map(e=>`<div class="row"><div><b>📄 ${e.title}</b><div class="sm">${new Date(e.end).toLocaleString()} · ${e.dur}m · ${e.tries} ${t('tr')}</div></div><div><button class="btn p" onclick="takeExam(${e.id})">${t('open')}</button>${isT()?` <button class="btn" onclick="delItem('exams',${e.id})">🗑 ${t('del')}</button>`:''}</div></div>`).join('')||`<p>${t('none')}</p>`}`}
 if(v==='perf'){const n=Object.keys(D.att).filter(k=>k.startsWith(S.user.id+':')).reduce((s,k)=>s+D.att[k],0);h+=`<h2>${t('perf')}</h2><div class="grid"><div class="sq"><span>📖</span><b>${t('lessons')}</b><h2>${ls.length}</h2></div><div class="sq"><span>📄</span><b>${t('exams')}</b><h2>${n}</h2></div></div>`}
-if(v==='set'){h+=`<h2>${t('set')}</h2><div class="row"><b>${t('lang')}</b><select style="width:auto" onchange="S.lang=this.value;LS.s('lang',S.lang);R()"><option value="ar" ${S.lang==='ar'?'selected':''}>العربية</option><option value="en" ${S.lang==='en'?'selected':''}>English</option></select></div><div class="row"><b>${t('theme')}</b><div><button class="btn g" onclick="S.theme='light';LS.s('theme','light');R()">☀️ ${t('light')}</button> <button class="btn g" onclick="S.theme='dark';LS.s('theme','dark');R()">🌙 ${t('dark')}</button></div></div>`}
-if(v==='students'){h+=`<h2>${t('students')}</h2><div class="sbar">🔍<input placeholder="${t('search')}" oninput="stFilter(this.value)"></div><div id="st">${stList('')}</div>`}
+if(v==='set'){h+=`<h2>${t('set')}</h2><div class="row"><b>${t('lang')}</b><select style="width:auto" onchange="S.lang=this.value;LS.s('lang',S.lang);R()"><option value="ar" ${S.lang==='ar'?'selected':''}>العربية</option><option value="en" ${S.lang==='en'?'selected':''}>English</option></select></div><div class="row"><b>${t('theme')}</b><div><button class="btn g" onclick="S.theme='light';LS.s('theme','light');R()">☀️ ${t('light')}</button> <button class="btn g" onclick="S.theme='dark';LS.s('theme','dark');R()">🌙 ${t('dark')}</button></div></div>${!isT()?`<h3>${S.lang==='ar'?'تغيير كلمة السر':'Change password'}</h3><input id="oldpw" type="password" autocomplete="current-password" placeholder="${S.lang==='ar'?'كلمة السر الحالية':'Current password'}"><input id="newpw" type="password" autocomplete="new-password" placeholder="${S.lang==='ar'?'كلمة السر الجديدة (6 أحرف على الأقل)':'New password (at least 6 characters)'}"><input id="confpw" type="password" autocomplete="new-password" placeholder="${S.lang==='ar'?'تأكيد كلمة السر الجديدة':'Confirm new password'}"><div class="err" id="pwerr"></div><button class="btn p" onclick="changePassword()">${S.lang==='ar'?'حفظ كلمة السر الجديدة':'Save new password'}</button>`:''}`}
+if(v==='students'){h+=`<h2>${t('students')}</h2><div class="sbar">🔍<input placeholder="${t('search')}" oninput="stFilter(this.value)"></div><div id="st">${S.lang==='ar'?'جارٍ تحميل الطلاب...':'Loading students...'}</div>`}
 return h+'</div>'}
-function stList(q){const f=D.users.filter(u=>(u.fn+' '+u.sn+' '+u.fam+' '+u.u).toLowerCase().includes(q.toLowerCase()));
+let studentCache=[];
+async function loadStudents(){
+  const target=$('#st'); if(!target || !isT()) return;
+  target.textContent=S.lang==='ar'?'جارٍ تحميل الطلاب...':'Loading students...';
+  try{
+    const snap=await fsdb.collection('users').get();
+    studentCache=snap.docs.map(doc=>{const d=doc.data();return {...d,id:doc.id,u:d.username||d.gm||d.email||''};}).filter(u=>u.role==='s');
+    D.users=studentCache;
+    const current=$('#st'); if(current) current.innerHTML=stList('');
+  }catch(err){
+    console.error('Could not load students from Firestore:',err);
+    const current=$('#st'); if(current) current.textContent=S.lang==='ar'?'تعذر تحميل الطلاب. تأكد من تسجيل الدخول وقواعد Firestore.':'Could not load students. Check sign-in and Firestore rules.';
+  }
+}
+function stList(q){const f=studentCache.filter(u=>(u.fn||'').concat(' ',u.sn||'',' ',u.fam||'',' ',u.u||'').toLowerCase().includes(q.toLowerCase()));
 return f.map(u=>{const b=u.ban&&u.ban>Date.now();return `<div class="row"><div><b>${u.fn} ${u.sn} ${u.fam}</b><div class="sm">${u.gr} · ${u.ph} · 👨 ${u.fp} · 👩 ${u.mp}<br>${u.gm}${b?`<br><span style="color:var(--red)">${t('banned')} ${new Date(u.ban).toLocaleString()}</span>`:''}</div></div><div><button class="btn p" onclick="allow('${u.id}')">＋</button> <button class="btn" onclick="ban('${u.id}')">${b?t('unban'):'⛔ '+t('ban')}</button></div></div>`}).join('')||`<p>${t('nf')}</p>`}
-function stFilter(q){$('#st').innerHTML=stList(q)}
+function stFilter(q){const target=$('#st');if(target)target.innerHTML=stList(q)}
 async function doLogin(){
   const email=$('#u').value.trim().toLowerCase(), p=$('#p').value, e=$('#e');
   e.textContent='';
@@ -183,6 +197,31 @@ async function doSignup(){
 async function logout(){
   try{await auth.signOut()}catch(err){console.error(err)}
   S.user=null;LS.s('sess',null);go('intro');
+}
+async function changePassword(){
+  const msg=$('#pwerr'),old=$('#oldpw')?.value||'',next=$('#newpw')?.value||'',confirmNext=$('#confpw')?.value||'';
+  const ar=S.lang==='ar';
+  if(msg)msg.textContent='';
+  if(!old||!next||!confirmNext){if(msg)msg.textContent=ar?'املأ كل الحقول.':'Fill in all fields.';return}
+  if(next.length<6){if(msg)msg.textContent=ar?'كلمة السر الجديدة لازم تكون 6 أحرف على الأقل.':'New password must be at least 6 characters.';return}
+  if(next!==confirmNext){if(msg)msg.textContent=ar?'تأكيد كلمة السر غير مطابق.':'Password confirmation does not match.';return}
+  const user=auth.currentUser;
+  if(!user||!user.email){if(msg)msg.textContent=ar?'سجّل الدخول مرة أخرى ثم حاول.':'Sign in again and try once more.';return}
+  try{
+    const credential=firebase.auth.EmailAuthProvider.credential(user.email,old);
+    await user.reauthenticateWithCredential(credential);
+    await user.updatePassword(next);
+    $('#oldpw').value='';$('#newpw').value='';$('#confpw').value='';
+    if(msg)msg.textContent=ar?'تم تغيير كلمة السر بنجاح.':'Password changed successfully.';
+  }catch(err){
+    console.error('Password change failed:',err);
+    let message=ar?'تعذر تغيير كلمة السر. تأكد من كلمة السر الحالية.':'Could not change password. Check your current password.';
+    if(err.code==='auth/weak-password')message=ar?'كلمة السر ضعيفة. اختر كلمة سر أقوى.':'Password is too weak. Choose a stronger password.';
+    else if(err.code==='auth/too-many-requests')message=ar?'محاولات كثيرة؛ حاول لاحقًا.':'Too many attempts. Try again later.';
+    else if(err.code==='auth/network-request-failed')message=ar?'تحقق من اتصال الإنترنت.':'Check your internet connection.';
+    else if(err.code==='auth/requires-recent-login')message=ar?'سجّل الخروج ثم ادخل مرة أخرى وحاول.':'Sign out, sign in again, and retry.';
+    if(msg)msg.textContent=message;
+  }
 }
 function lev(a,b){const m=[...Array(b.length+1).keys()];for(let i=1;i<=a.length;i++){let p=m[0];m[0]=i;for(let j=1;j<=b.length;j++){const c=m[j];m[j]=Math.min(m[j]+1,m[j-1]+1,p+(a[i-1]===b[j-1]?0:1));p=c}}return m[b.length]}
 function doSearch(){const q=S.q.trim().toLowerCase(),r=$('#res');if(!q){r.innerHTML='';return}
