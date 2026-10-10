@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>منصه علامك</title>
+<title>منصة ماناسا</title>
 <style>
 :root{--bg:#fff;--fg:#111;--card:#f4f4f6;--red:#8b0000;--pur:#6b3fa0;--bd:#ddd;--yel:#ffd400;box-sizing:border-box}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0d0d0f;--fg:#f2f2f2;--card:#1a1a1e;--bd:#333}}
@@ -45,6 +45,7 @@ video,iframe{width:100%;border-radius:10px;border:0}
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-storage-compat.js"></script>
 <script>
 const firebaseConfig = {
   apiKey: "AIzaSyCG_XVGn1aW8pibcjt2K9jl9G74SYRpUI0",
@@ -57,6 +58,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const fsdb = firebase.firestore();
+const storage = firebase.storage();
+let lessonUnsub=null, examUnsub=null;
 auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(console.error);
 
 const LS={g(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v,(a,b)=>(a==='v'||a==='p')?undefined:b))}catch(e){}}};
@@ -68,7 +71,7 @@ let S={lang:LS.g('lang','ar'),theme:LS.g('theme','auto'),view:'intro',user:LS.g(
 const t=k=>T[S.lang][k]||k,$=s=>document.querySelector(s),save=()=>LS.s('db',D);
 const isT=()=>S.user&&S.user.role==='t';
 const me=()=>isT()?S.user:D.users.find(u=>u.id===S.user.id)||S.user;
-const vis=()=>isT()?D.lessons:D.lessons.filter(l=>(me().ok||[]).includes(l.id));
+const vis=()=>D.lessons;
 function theme(){const r=document.documentElement;S.theme==='auto'?r.removeAttribute('data-theme'):r.setAttribute('data-theme',S.theme);r.lang=S.lang;document.body.dir=S.lang==='ar'?'rtl':'ltr'}
 function go(v){S.view=v;S.menu=false;S.bell=false;R()}
 const svg={nb:'<svg viewBox="0 0 46 60"><rect x="4" y="2" width="38" height="56" rx="4" fill="#8b0000"/><rect x="10" y="2" width="32" height="56" rx="3" fill="#fff" stroke="#111"/><path d="M16 14h20M16 24h20M16 34h20" stroke="#6b3fa0" stroke-width="2"/></svg>',
@@ -138,10 +141,10 @@ async function loadFirebaseProfile(user){
     const snap=await fsdb.collection('users').doc(user.uid).get();
     const profile=snap.exists?snap.data():{};
     S.user={id:user.uid,role:profile.role==='t'?'t':'s',email:user.email||'',...profile};
-    S.view='home';R();
+    S.view='home';R();startCloudSync();
   }catch(err){
     S.user={id:user.uid,role:'s',email:user.email||''};
-    S.view='home';R();
+    S.view='home';R();startCloudSync();
     console.error('Could not load profile from Firestore:',err);
   }
 }
@@ -229,23 +232,34 @@ const ls=vis(),hit=ls.filter(l=>l.title.toLowerCase().includes(q));let out=hit,n
 if(!hit.length&&ls.length){const best=ls.map(l=>({l,d:Math.min(...l.title.toLowerCase().split(/\s+/).map(w=>lev(q,w)))})).sort((a,b)=>a.d-b.d)[0];out=[best.l];note=t('best')+': '}
 r.innerHTML=out.map(l=>`<div class="row"><b>${note}📘 ${l.title}</b><button class="btn p" onclick="view(${l.id})">${t('open')}</button></div>`).join('')||`<p>${t('nf')}</p>`}
 function modal(h){const m=document.createElement('div');m.className='mod';m.innerHTML=`<div>${h}<p><button class="btn g" onclick="this.closest('.mod').remove()">${t('close')}</button></p></div>`;document.body.appendChild(m);return m}
-function view(id){const l=D.lessons.find(x=>x.id===id);modal(`<h3>${l.title}</h3>${l.v?`<video controls src="${l.v}"></video>`:''}${l.p?`<iframe style="height:60vh" src="${l.p}"></iframe>`:''}${!l.v&&!l.p?`<p class="sm">—</p>`:''}`)}
-function addLesson(){modal(`<h3>${t('addL')}</h3>${field('lt','title')}<label class="sm">${t('video')}</label><input id="lv" type="file" accept="video/*"><label class="sm">${t('pdf')}</label><input id="lp" type="file" accept="application/pdf"><button class="btn" onclick="saveLesson(this)">${t('save')}</button>`)}
-function saveLesson(b){const ti=$('#lt').value.trim();if(!ti)return;const f=i=>$(i).files[0]?URL.createObjectURL($(i).files[0]):null;
-D.lessons.push({id:Date.now(),title:ti,v:f('#lv'),p:f('#lp')});save();b.closest('.mod').remove();R()}
-function delItem(k,id){if(!confirm(t('del')+'؟'))return;D[k]=D[k].filter(x=>x.id!==id);save();R()}
+function view(id){const l=D.lessons.find(x=>String(x.id)===String(id));if(!l)return;let content=`<h3>${esc(l.title)}</h3>`;
+if(l.url)content+=`<p><a class="btn p" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">${S.lang==='ar'?'اضغط للمشاهدة':'Click to watch'}</a></p>`;
+if(l.v)content+=`<video controls playsinline src="${esc(l.v)}"></video>`;
+if(l.p)content+=`<p><a class="btn g" href="${esc(l.p)}" target="_blank" rel="noopener noreferrer">${S.lang==='ar'?'فتح / تحميل ملف PDF':'Open / download PDF'}</a></p>`;
+if(!l.url&&!l.v&&!l.p)content+=`<p class="sm">—</p>`;modal(content)}
+function esc(v){return String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function addLesson(){modal(`<h3>${t('addL')}</h3>${field('lt','title')}<label class="sm">${S.lang==='ar'?'رابط الدرس أو الفيديو (اختياري)':'Lesson/video URL (optional)'}</label><input id="lu" type="url" placeholder="https://..."><label class="sm">${t('video')} (${S.lang==='ar'?'اختياري':'optional'})</label><input id="lv" type="file" accept="video/*"><label class="sm">${t('pdf')} (${S.lang==='ar'?'اختياري':'optional'})</label><input id="lp" type="file" accept="application/pdf"><p class="sm">${S.lang==='ar'?'قد يستغرق رفع الفيديو وقتًا حسب حجمه وسرعة الإنترنت.':'Video upload time depends on file size and connection.'}</p><div class="err" id="lessonerr"></div><button class="btn" onclick="saveLesson(this)">${t('save')}</button>`)}
+async function saveLesson(b){const ti=$('#lt').value.trim(),url=$('#lu').value.trim(),vf=$('#lv').files[0],pf=$('#lp').files[0],msg=$('#lessonerr');if(!ti){if(msg)msg.textContent=S.lang==='ar'?'اكتب عنوان الدرس أولًا.':'Enter a lesson title.';return}if(url&&!/^https?:\/\//i.test(url)){if(msg)msg.textContent=S.lang==='ar'?'الرابط لازم يبدأ بـ https:// أو http://':'URL must start with https:// or http://';return}if(!url&&!vf&&!pf){if(msg)msg.textContent=S.lang==='ar'?'أضف رابطًا أو فيديو أو ملف PDF واحدًا على الأقل.':'Add a URL, video, or PDF file.';return}
+if(!isT()||!auth.currentUser){if(msg)msg.textContent=S.lang==='ar'?'يجب تسجيل الدخول بحساب المدرّس.':'Sign in with the teacher account.';return}
+const btn=b;b.disabled=true;btn.textContent=S.lang==='ar'?'جارٍ الحفظ والرفع...':'Saving and uploading...';
+try{const id=String(Date.now()),lesson={id,title:ti,url:url||'',v:'',p:'',createdAt:firebase.firestore.FieldValue.serverTimestamp(),createdBy:auth.currentUser.uid};
+if(vf){const ref=storage.ref().child(`lessons/${id}/${Date.now()}_${vf.name.replace(/[^\w.\-]/g,'_')}`);const task=ref.put(vf);await task;lesson.v=await ref.getDownloadURL()}
+if(pf){const ref=storage.ref().child(`lessons/${id}/${Date.now()}_${pf.name.replace(/[^\w.\-]/g,'_')}`);const task=ref.put(pf);await task;lesson.p=await ref.getDownloadURL()}
+await fsdb.collection('lessons').doc(id).set(lesson);b.closest('.mod').remove();await refreshCloudOnce();R();
+}catch(err){console.error('Lesson save failed:',err);if(msg)msg.textContent=(S.lang==='ar'?'فشل الحفظ: ':'Save failed: ')+(err.code||err.message||'Unknown error')+'. '+(S.lang==='ar'?'تحقق من قواعد Firestore وStorage.':'Check Firestore and Storage rules.');btn.disabled=false;btn.textContent=t('save')}}
+async function refreshCloudOnce(){try{const [ls,es]=await Promise.all([fsdb.collection('lessons').get(),fsdb.collection('exams').get()]);D.lessons=ls.docs.map(d=>({...d.data(),id:d.id}));D.exams=es.docs.map(d=>({...d.data(),id:d.id}));}catch(e){console.error('Cloud refresh failed:',e)}}
+function startCloudSync(){if(!auth.currentUser)return;if(lessonUnsub)lessonUnsub();if(examUnsub)examUnsub();lessonUnsub=fsdb.collection('lessons').orderBy('createdAt','desc').onSnapshot(snap=>{D.lessons=snap.docs.map(d=>({...d.data(),id:d.id}));if(S.user&&['home','lessons','exams'].includes(S.view))R()},err=>console.error('Lessons sync:',err));examUnsub=fsdb.collection('exams').onSnapshot(snap=>{D.exams=snap.docs.map(d=>({...d.data(),id:d.id}));if(S.user&&['home','lessons','exams'].includes(S.view))R()},err=>console.error('Exams sync:',err))}
 function allow(uid){const u=D.users.find(x=>x.id===uid);modal(`<h3>${t('allow')}</h3>${D.lessons.map(l=>`<label class="row"><span>${l.title}</span><input type="checkbox" style="width:auto" ${u.ok.includes(l.id)?'checked':''} onchange="tog('${uid}',${l.id},this.checked)"></label>`).join('')}`)}
 function tog(uid,lid,on){const u=D.users.find(x=>x.id===uid);u.ok=u.ok.filter(i=>i!==lid);if(on)u.ok.push(lid);save()}
 function ban(uid){const u=D.users.find(x=>x.id===uid);u.ban=(u.ban&&u.ban>Date.now())?0:Date.now()+864e5;save();R()}
-function addExam(){modal(`<h3>${t('addE')}</h3>${field('et','title')}<label class="sm">${t('end')}</label><input id="ee" type="datetime-local">${field('ed','dur','number')}${field('en','tries','number')}<button class="btn" onclick="saveExam(this)">${t('save')}</button>`)}
-function saveExam(b){const x={id:Date.now(),title:$('#et').value.trim(),end:new Date($('#ee').value).getTime(),dur:+$('#ed').value,tries:+$('#en').value};
-if(!x.title||!x.end||!x.dur||!x.tries)return;D.exams.push(x);save();b.closest('.mod').remove();R()}
+function addExam(){modal(`<h3>${t('addE')}</h3>${field('et','title')}<label class="sm">${t('end')}</label><input id="ee" type="datetime-local">${field('ed','dur','number')}${field('en','tries','number')}<div class="err" id="examerr"></div><button class="btn" onclick="saveExam(this)">${t('save')}</button>`)}
+async function saveExam(b){const x={id:String(Date.now()),title:$('#et').value.trim(),end:new Date($('#ee').value).getTime(),dur:+$('#ed').value,tries:+$('#en').value,createdBy:auth.currentUser?.uid||'',createdAt:firebase.firestore.FieldValue.serverTimestamp()};const msg=$('#examerr');if(!x.title||!x.end||!x.dur||!x.tries){if(msg)msg.textContent=S.lang==='ar'?'املأ كل الحقول بقيم صحيحة.':'Fill all fields with valid values.';return}try{await fsdb.collection('exams').doc(x.id).set(x);b.closest('.mod').remove();await refreshCloudOnce();R()}catch(e){console.error(e);if(msg)msg.textContent=(S.lang==='ar'?'فشل حفظ الاختبار: ':'Could not save exam: ')+(e.code||e.message)}}
 function takeExam(id){const e=D.exams.find(x=>x.id===id);if(isT()){modal(`<h3>${e.title}</h3>`);return}
 const k=S.user.id+':'+id,n=D.att[k]||0;if(Date.now()>e.end)return modal(`<p>${t('closed')}</p>`);if(n>=e.tries)return modal(`<p>${t('nomore')}</p>`);
 D.att[k]=n+1;save();modal(`<h3>${e.title}</h3><p>${t('started')} ${e.dur}</p><p class="sm">${n+1} / ${e.tries}</p>`)}
 S.user=null;S.view='intro';theme();R();
 auth.onAuthStateChanged(async user=>{
-  if(user){await loadFirebaseProfile(user)}
+  if(user){await loadFirebaseProfile(user);startCloudSync()}
   else{S.user=null;if(S.view!=='login'&&S.view!=='signup')S.view='intro';R()}
 });
 </script></body></html>
