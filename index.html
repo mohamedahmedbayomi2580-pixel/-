@@ -2,6 +2,8 @@
 <html lang="ar" dir="rtl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>منصة ماناسا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fff;--fg:#111;--card:#f4f4f6;--red:#8b0000;--pur:#6b3fa0;--bd:#ddd;--yel:#ffd400;box-sizing:border-box}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0d0d0f;--fg:#f2f2f2;--card:#1a1a1e;--bd:#333}}
@@ -72,6 +74,62 @@ body.hb{background-size:cover;background-position:center;background-attachment:f
 .pbar{height:14px;background:var(--bd);border-radius:10px;overflow:hidden;margin:6px 0}
 .pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--pur));transition:width .4s}
 .pct{font-size:1.8em;font-weight:900;color:var(--red)}
+
+/* ===== صفحة الدخول / إنشاء الحساب (شاشة منقسمة 40/60) ===== */
+.auth{--g:#0f3d2e;--g2:#1b5e47;--sage:#eef5f0;--pur:#7a5fa8;--yel:#f5c518;--mut:#6b7f74;--ln:#dfe8e2;
+  display:grid;grid-template-columns:40% 60%;min-height:100vh;direction:ltr;font-family:'Cairo','Tajawal',Tahoma,sans-serif;color:var(--g)}
+.auth *{font-family:inherit}
+.auth .a-info,.auth .a-form{padding:clamp(24px,4vw,56px);display:flex;flex-direction:column;justify-content:center}
+.auth .a-info{background:var(--sage)}
+.auth .a-form{background-color:#fff;background-image:linear-gradient(#0f3d2e0d 1px,transparent 1px),linear-gradient(90deg,#0f3d2e0d 1px,transparent 1px);background-size:34px 34px;align-items:center}
+.auth .a-in{width:100%;max-width:520px}
+.auth .logo{display:flex;align-items:center;gap:12px;margin-bottom:clamp(20px,4vh,40px)}
+.auth .logo b{font-size:2.4rem;font-weight:900;line-height:1;background:linear-gradient(90deg,var(--g2),var(--pur));-webkit-background-clip:text;background-clip:text;color:transparent}
+.auth .logo span{font-size:1.5rem;font-weight:800;color:var(--g)}
+.auth h1{font-size:clamp(1.6rem,2.6vw,2.2rem);font-weight:900;margin:0 0 12px;line-height:1.4;color:var(--g)}
+.auth .sub{color:var(--mut);font-size:1rem;line-height:1.9;margin:0 0 clamp(18px,3vh,30px)}
+.auth .feat{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--ln);border-radius:18px;padding:14px 16px;margin-bottom:12px;box-shadow:0 2px 10px #0f3d2e0a;transition:.25s}
+.auth .feat:hover{transform:translateY(-2px);box-shadow:0 8px 20px #0f3d2e14}
+.auth .feat h4{margin:0 0 2px;font-size:1rem;font-weight:800;color:var(--g)}
+.auth .feat p{margin:0;font-size:.85rem;color:var(--mut);line-height:1.6}
+.auth .ic{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center}
+.auth .ic svg{width:24px;height:24px}
+.auth .ic.p{background:#7a5fa81f;color:var(--pur)}.auth .ic.g{background:#0f3d2e1a;color:var(--g)}.auth .ic.y{background:#f5c51833;color:#c99a00}
+.auth .tabs{display:flex;gap:10px;margin-bottom:28px}
+.auth .tab{flex:1;border:0;border-radius:999px;padding:12px 10px;font-size:1rem;font-weight:800;cursor:pointer;background:#eceff1;color:#111;transition:.25s}
+.auth .tab.on{background:var(--g);color:#fff;box-shadow:0 6px 16px #0f3d2e40}
+.auth .tab:not(.on):hover{background:#e0e5e2}
+.auth .ft{text-align:center;margin-bottom:26px}
+.auth .ft h2{margin:0 0 6px;font-size:1.8rem;font-weight:900;color:var(--g)}
+.auth .ft p{margin:0;color:var(--mut)}
+.auth label.lb2{display:block;font-weight:700;font-size:.95rem;margin:16px 0 7px;color:var(--g)}
+.auth .inp{position:relative}
+.auth .inp input{width:100%;margin:0;background:#fff;border:1.5px solid var(--ln);border-radius:14px;padding:13px 16px;padding-inline-end:46px;font-size:1rem;color:#111;outline:0;transition:.2s}
+.auth .inp input::placeholder{color:#a3b0a9}
+.auth .inp input:focus{border-color:var(--g);box-shadow:0 0 0 4px #0f3d2e1a}
+.auth .inp .si{position:absolute;inset-inline-end:14px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:#8a9b92;pointer-events:none}
+.auth .inp:focus-within .si{color:var(--pur)}
+.auth .inp.pw input{padding-inline-end:76px}
+.auth .inp.pw .si{inset-inline-end:44px}
+.auth .eye{position:absolute;inset-inline-end:10px;top:50%;transform:translateY(-50%);background:none;border:0;cursor:pointer;padding:4px;color:#8a9b92;display:grid}
+.auth .eye svg{width:20px;height:20px}.auth .eye:hover{color:var(--g)}
+.auth .two{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.auth .forgot{margin:10px 0 0;font-size:.85rem}
+.auth .forgot a{color:var(--pur);cursor:pointer;text-decoration:none;font-weight:600}.auth .forgot a:hover{text-decoration:underline}
+.auth .err{color:#d93025;font-size:.9rem;min-height:1.3em;margin:12px 0 0;text-align:center}
+.auth .ok{color:#1a8a3a}
+.auth .go{position:relative;width:100%;margin-top:14px;border:0;border-radius:999px;padding:15px;font-size:1.1rem;font-weight:900;cursor:pointer;background:var(--g);color:#fff;overflow:hidden;box-shadow:0 10px 24px #0f3d2e40;transition:.25s}
+.auth .go::after{content:"";position:absolute;bottom:0;left:18%;right:18%;height:3px;border-radius:3px;background:var(--yel)}
+.auth .go:hover{background:var(--g2);transform:translateY(-1px)}
+.auth .go:active{transform:none}
+.auth .go:disabled{opacity:.6}
+.auth .bk{display:block;text-align:center;margin-top:20px;font-size:.88rem;color:var(--mut);cursor:pointer}.auth .bk:hover{color:var(--g)}
+@media(max-width:900px){
+  .auth{grid-template-columns:1fr}
+  .auth .a-form{order:1;min-height:auto;padding-block:32px}
+  .auth .a-info{order:2;padding-block:32px}
+}
+@media(max-width:520px){.auth .two{grid-template-columns:1fr}.auth .ft h2{font-size:1.5rem}}
 </style></head><body><div id="app"></div>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
@@ -98,6 +156,8 @@ en:{brand:'Manasa Platform',hero:'Your Education Is the Foundation',login:'Log i
 addT:'Add teacher',editT:'Edit teacher',tname:'Teacher name',temail:'Teacher email (for login)',tpass:'Teacher password (min 6)',photo:'Photo (optional)',sCount:'Students',reqs:'Join requests',accept:'Accept',reject:'Reject',joinReq:'Request to join',pending:'Request sent ⏳',joined:'Joined ✓',availT:'Available teachers',pickT:'Pick your teacher and send a join request',noT:'No teachers yet',setQ:'Add questions',addQ:'＋ Add question',qText:'Question text',mcq4:'Multiple choice (4 options)',choice:'Option',answers:'Answers',gradeL:'Grade',comment:'Comment',gsave:'Save grade',waiting:'Awaiting grading',start:'Start',submit:'Submit',left:'Time left',sent:'Answers submitted ✓',resetPw:'Password',resetSent:'Password reset link sent to the student\'s email',myProfile:'Edit my name & photo',noQ:'This exam has no questions',attempts:'Attempts',noSubs:'No submissions yet',yourGrade:'Your grade',myStudents:'My students',noReq:'No requests',groupsT:'Groups',newGroup:'＋ New group',groupName:'Group name',noGroup:'No group',grantG:'Groups (all lessons)',grantL:'Single lessons',profileT:'My profile',changePhoto:'Change photo',allStudents:'All students',allT:'All teachers',refresh:'Refresh',resetT:'Password',resetSentT:'Password reset link sent to the teacher\'s email',pwNote:'Nobody can view anyone\'s password, but you can send a reset link.',mainT:'Main teacher',teacherL:'Teacher',groupsT:'Groups',newGroup:'＋ New group',groupName:'Group name',noGroup:'No group',grantG:'Groups (all their lessons)',grantL:'Single lessons',profileT:'My profile',changePhoto:'Change photo',allStudents:'All students',allT:'All teachers',refresh:'Refresh',resetT:'Password',resetSentT:"Password reset link sent to the teacher's email",pwNote:"Nobody can view anyone's password, but you can send a reset link.",link:'Lesson link (YouTube or any link)',confirmDel:'Are you sure?',errG:'Something went wrong, try again',msg:'Message',msgSel:'Message selected',delSel:'Delete selected',delAll:'Delete all',selAll:'Select all',to:'To',msgText:'Write your message to the student...',send:'Send',msgSent:'Message sent ✓',newL:'New',confirmDelOne:'Delete this student?',confirmDelN:'Delete {n} students?',delNoteT:'The student will be removed from your list and lose access to your lessons.',delNoteA:'The student data will be permanently deleted.',confirmAll:'⚠️ Warning: all listed students ({n}) will be deleted. This cannot be undone.',confirmAll2:'Final confirmation: delete all?',deleted:'Deleted ✓',stickerColor:'Sticker color',g1:'First year',g2:'Second year',g3:'Third year',noGrade:'No year',pickGrade:'Choose your school year',forGrade:'School year',manualGrade:'No year (I pick students manually)',allGrades:'All years',brandT:'Platform name',brandSaved:'Platform name saved ✓ everyone will see it'}};
 Object.assign(T.ar,{watched:'تمت المشاهدة',noViews:'استنفدت عدد مرات مشاهدة هذا الدرس. تواصل مع مدرسك.',maxViewsL:'عدد مرات المشاهدة المسموحة لكل طالب (0 = بدون حد)',viewsBtn:'مرات المشاهدة',viewsStat:'طلاب شاهدوا',viewsTot:'إجمالي المشاهدات',viewsTitle:'مشاهدات الدرس',resetV:'تصفير',noViewsYet:'لا توجد مشاهدات بعد',progress:'نسبة إنجازي',pAll:'الكل',pLessons:'الدروس',pExams:'الاختبارات',pDone:'أنجزت',pOf:'من',pOpen:'المتاح لك',pNotYet:'لم يتم بعد',pDoneW:'تم',bannerEdit:'تعديل اللافتة',bannerImg:'صورة اللافتة (أي مقاس)',bannerTxt:'الكلام على اللافتة (اتركه فارغًا لإخفائه)',bannerColor:'لون الكلام',cW:'أبيض',cB:'أسود',cY:'أصفر',rmImg:'إزالة الصورة الحالية',bgEdit:'خلفية الصفحة',bgImg:'صورة الخلفية',imgBig:'الصورة كبيرة جدًا، جرّب صورة أخرى',saved:'تم الحفظ ✓'});
 Object.assign(T.en,{watched:'Watched',noViews:'You used all allowed views of this lesson. Contact your teacher.',maxViewsL:'Allowed views per student (0 = unlimited)',viewsBtn:'Views',viewsStat:'students watched',viewsTot:'total views',viewsTitle:'Lesson views',resetV:'Reset',noViewsYet:'No views yet',progress:'My progress',pAll:'All',pLessons:'Lessons',pExams:'Exams',pDone:'Completed',pOf:'of',pOpen:'available to you',pNotYet:'Not yet',pDoneW:'Done',bannerEdit:'Edit banner',bannerImg:'Banner image (any size)',bannerTxt:'Banner text (leave empty to hide)',bannerColor:'Text color',cW:'White',cB:'Black',cY:'Yellow',rmImg:'Remove current image',bgEdit:'Page background',bgImg:'Background image',imgBig:'Image too large, try another',saved:'Saved ✓'});
+Object.assign(T.ar,{aLogin:'تسجيل دخول',aSignup:'إنشاء حساب',aWelcome:'أهلاً بعودتك',aWelcomeS:'سجل دخولك واكمل رحلة التعلم',aNew:'ابدأ رحلتك الآن',aNewS:'أنشئ حسابك وانضم لأفضل مدرسي مصر',aEmail:'البريد الالكتروني',aPass:'كلمة المرور',aPassPh:'ادخل كلمة المرور',aForgot:'نسيت كلمة المرور؟',aMainT:'أهلاً بك في طريقك للـ 99%',aMainS:'سجل الآن للوصول لأفضل الشروحات والامتحانات والتدريبات مع نخبة من أفضل مدرسي مصر.',aF1:'نخبة من المعلمين المتميزين',aF1s:'شروحات مبسطة من أفضل مدرسي مصر',aF2:'امتحانات وتدريبات مستمرة',aF2s:'اختبارات دورية تقيس مستواك أولاً بأول',aF3:'متابعة فردية دقيقة',aF3s:'تقارير تفصيلية عن أدائك وتقدمك',aLogo:'منصة 99',aFirst:'الاسم الأول',aForgotNeed:'اكتب بريدك الإلكتروني أولاً ثم اضغط «نسيت كلمة المرور؟»',aForgotOk:'تم إرسال رابط تغيير كلمة المرور إلى بريدك'});
+Object.assign(T.en,{aLogin:'Log in',aSignup:'Sign up',aWelcome:'Welcome back',aWelcomeS:'Log in and continue your learning journey',aNew:'Start your journey',aNewS:'Create your account and join Egypt\'s best teachers',aEmail:'Email',aPass:'Password',aPassPh:'Enter your password',aForgot:'Forgot your password?',aMainT:'Welcome to your path to 99%',aMainS:'Sign up now to reach the best lessons, exams and practice with Egypt\'s top teachers.',aF1:'Outstanding teachers',aF1s:'Clear lessons from top teachers',aF2:'Continuous exams & practice',aF2s:'Regular tests that track your level',aF3:'Close individual follow-up',aF3s:'Detailed reports on your progress',aLogo:'Platform 99',aFirst:'First name',aForgotNeed:'Enter your email first, then press Forgot password',aForgotOk:'Password reset link sent to your email'});
 const D={lessons:[],exams:[],students:[],reqs:[],subs:[],teachers:[],myReqs:[],examsBy:{},counts:{},groups:[],lessonsA:[],lessonsG:{},all:[],allLoaded:false,msgs:[],views:[]};
 let gUnsubs=[],gKey='';
 const S={lang:LS.g('lang','ar'),theme:LS.g('theme','auto'),view:'intro',user:null,menu:false,bell:false,q:'',sq:'',ft:'',brand:LS.g('brand',''),banner:null,bg:'',pf:'all',pt:''};
@@ -128,10 +188,48 @@ const bar=()=>`<div style="padding:10px"><a class="l" onclick="go('intro')">${S.
 const field=(id,k,type='text')=>`<input id="${id}" type="${type}" placeholder="${t(k)}" autocomplete="off">`;
 const footer=()=>`<div class="foot">${t('dev')}: <b>${t('devName')}</b> &nbsp;|&nbsp; ${t('contact')}: <a href="tel:01020939471" dir="ltr">01020939471</a> &nbsp;<a href="https://wa.me/201020939471" target="_blank" rel="noopener">WhatsApp</a></div>`;
 
+
+const IC={mail:'<svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>',
+lock:'<svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+user:'<svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c1-4 4-6 8-6s7 2 8 6"/></svg>',
+phone:'<svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A15 15 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>',
+eyeOff:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M10.6 6.1A9.8 9.8 0 0 1 12 6c5 0 9 4.5 10 6-.5.8-1.6 2.1-3.1 3.3M6.6 6.6C4.3 8 2.7 10.2 2 12c1 1.5 5 6 10 6 1.6 0 3-.4 4.2-1"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>',
+eye:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12c1-1.5 5-6 10-6s9 4.5 10 6c-1 1.5-5 6-10 6S3 13.5 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+cap:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"/><path d="M22 9v6"/></svg>',
+shield:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>',
+pen:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 13l5.5-5.5 2 2L11 15l-3 1z"/></svg>'};
+function afield(id,label,type,icon,ph,extra=''){const pw=type==='password';
+  return `<div><label class="lb2" for="${id}">${label}</label><div class="inp${pw?' pw':''}"><input id="${id}" type="${type}" placeholder="${ph||''}" autocomplete="${pw?'current-password':'off'}" ${extra}>${IC[icon]}${pw?`<button type="button" class="eye" onclick="togglePw('${id}',this)" aria-label="show/hide">${IC.eyeOff}</button>`:''}</div></div>`}
+function togglePw(id,b){const i=$('#'+id);if(!i)return;const s=i.type==='password';i.type=s?'text':'password';b.innerHTML=s?IC.eye:IC.eyeOff}
+const enter=f=>`onkeydown="if(event.key==='Enter'){event.preventDefault();${f}()}"`;
+function authPage(mode){const d=S.lang==='ar'?'rtl':'ltr',login=mode==='login';
+  const info=`<aside class="a-info" dir="${d}"><div class="a-in" style="max-width:480px;margin-inline:auto">
+    <div class="logo"><b>99%</b><span>${t('aLogo')}</span></div>
+    <h1>${t('aMainT')}</h1><p class="sub">${t('aMainS')}</p>
+    <div class="feat"><div class="ic p">${IC.cap}</div><div><h4>${t('aF1')}</h4><p>${t('aF1s')}</p></div></div>
+    <div class="feat"><div class="ic g">${IC.shield}</div><div><h4>${t('aF2')}</h4><p>${t('aF2s')}</p></div></div>
+    <div class="feat"><div class="ic y">${IC.pen}</div><div><h4>${t('aF3')}</h4><p>${t('aF3s')}</p></div></div></div></aside>`;
+  const tabs=`<div class="tabs"><button class="tab${login?' on':''}" onclick="go('login')">${t('aLogin')}</button><button class="tab${login?'':' on'}" onclick="go('signup')">${t('aSignup')}</button></div>`;
+  const body=login
+   ?`<div class="ft"><h2>${t('aWelcome')}</h2><p>${t('aWelcomeS')}</p></div>
+     ${afield('u',t('aEmail'),'text','mail','name@example.com',enter('doLogin'))}
+     ${afield('p',t('aPass'),'password','lock',t('aPassPh'),enter('doLogin'))}
+     <div class="forgot"><a onclick="forgotPw()">${t('aForgot')}</a></div>
+     <div class="err" id="e"></div><button class="go" onclick="doLogin()">${t('aLogin')}</button>`
+   :`<div class="ft"><h2>${t('aNew')}</h2><p>${t('aNewS')}</p></div>
+     <div class="two">${afield('fn',t('fn'),'text','user')}${afield('sn',t('sn'),'text','user')}</div>
+     ${afield('fam',t('fam'),'text','user')}
+     <div class="two">${afield('fp',t('fp'),'tel','phone')}${afield('ph',t('ph'),'tel','phone')}</div>
+     ${afield('gm',t('aEmail'),'email','mail','name@example.com')}
+     ${afield('p',t('pass'),'password','lock','',enter('doSignup'))}
+     <div class="err" id="e"></div><button class="go" onclick="doSignup()">${t('aSignup')}</button>`;
+  return `<div class="auth">${info}<section class="a-form" dir="${d}"><div class="a-in">${tabs}${body}<a class="bk" onclick="go('intro')">${S.lang==='ar'?'→':'←'} ${t('back')}</a></div></section></div>`}
+async function forgotPw(){const e=$('#e'),em=$('#u').value.trim().toLowerCase();e.className='err';
+  if(!/^\S+@\S+\.\S+$/.test(em)){e.textContent=t('aForgotNeed');return}
+  try{await auth.sendPasswordResetEmail(em);e.className='err ok';e.textContent=t('aForgotOk')}catch(err){console.error(err);e.textContent=authMessage(err)}}
 function R(){theme();const a=$('#app');let h='';
 if(S.view==='intro'||(!S.user&&!['login','signup'].includes(S.view)))h=tools()+`<div class="hero0"><h2 class="brandN" style="color:var(--red);margin:0 0 6px">${brand()}</h2><h1>${t('hero')}</h1></div>`;
-else if(S.view==='login')h=bar()+`<div class="box"><h2>${t('login')}</h2>${field('u','user','text')}${field('p','pass','password')}<div class="err" id="e"></div><button class="btn" style="width:100%" onclick="doLogin()">${t('login')}</button></div>`;
-else if(S.view==='signup')h=bar()+`<div class="box"><h2>${t('signup')}</h2>${field('fn','fn')}${field('sn','sn')}${field('fam','fam')}${field('fp','fp','tel')}${field('ph','ph','tel')}${field('gm','user','email')}${field('p','pass','password')}<div class="err" id="e"></div><button class="btn" style="width:100%" onclick="doSignup()">${t('signup')}</button></div>`;
+else if(S.view==='login'||S.view==='signup')h=authPage(S.view);
 else h=app();
 a.innerHTML=`<main>${h}</main>${footer()}`;
 if(S.view==='teachers'&&isAdmin())loadCounts();
