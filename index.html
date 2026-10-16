@@ -5,14 +5,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff;--fg:#111;--card:#f4f4f6;--red:#8b0000;--pur:#6b3fa0;--bd:#ddd;--yel:#ffd400;box-sizing:border-box}
+:root{--bg:#fbfcfb;--fg:#19372d;--card:#fff;--red:#14513d;--pur:#7863a8;--bd:#e4ebe6;--yel:#f5c928;box-sizing:border-box}
 @media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0d0d0f;--fg:#f2f2f2;--card:#1a1a1e;--bd:#333}}
 :root[data-theme=dark]{--bg:#0d0d0f;--fg:#f2f2f2;--card:#1a1a1e;--bd:#333}
 *{box-sizing:border-box}html{height:100%}
 body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);font-family:Tahoma,Arial,sans-serif;transition:.3s}
 #app{min-height:100vh;display:flex;flex-direction:column}main{flex:1}
 button,input,select,textarea{font:inherit}
-.btn{border:0;border-radius:10px;padding:10px 18px;cursor:pointer;background:var(--red);color:#fff;font-weight:bold}
+.btn{border:0;border-radius:10px;padding:10px 18px;cursor:pointer;background:var(--red);color:#fff;font-weight:bold;transition:transform .18s,box-shadow .18s,background .18s}
 .btn.y{background:var(--yel);color:#000}.btn.p{background:var(--pur)}.btn.g{background:var(--card);color:var(--fg);border:1px solid var(--bd)}.btn:disabled{opacity:.5}.btn.s{padding:6px 12px;font-size:.85em}
 input,select,textarea{width:100%;padding:11px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--fg);margin:5px 0}
 .box{max-width:430px;margin:6vh auto;padding:24px;border-radius:16px;background:var(--card);border-top:4px solid var(--red);border-bottom:4px solid var(--pur)}
@@ -130,6 +130,70 @@ body.hb{background-size:cover;background-position:center;background-attachment:f
   .auth .a-info{order:2;padding-block:32px}
 }
 @media(max-width:520px){.auth .two{grid-template-columns:1fr}.auth .ft h2{font-size:1.5rem}}
+
+/* ===== Manasa dashboard visual refresh ===== */
+:root{--bg:#f7faf8;--fg:#18392e;--card:#fff;--red:#14513d;--pur:#7863a8;--bd:#e4ebe6;--yel:#f5c928}
+body{font-family:'Cairo',Tahoma,Arial,sans-serif;background:#f7faf8;color:#18392e}
+button{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.btn{background:#14513d;border-radius:12px;box-shadow:0 3px 10px #14513d12}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px #14513d20}
+.btn.y{background:#f5c928;color:#18392e}.btn.p{background:#7863a8}.btn.g{background:#fff;color:#18392e;border-color:#e4ebe6}
+input,select,textarea{background:#fff;border:1px solid #e4ebe6;border-radius:13px;transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#14513d;box-shadow:0 0 0 3px #14513d15}
+.top{padding:13px clamp(16px,3vw,32px);border-bottom:1px solid #e4ebe6;border-top:3px solid #14513d;box-shadow:0 4px 18px #18392e06;background:#fff}
+.brandN{color:#14513d!important;font-size:1.12rem;letter-spacing:-.3px}
+.ham i{background:#14513d}
+.bell b{background:#f5c928;color:#18392e}
+.wrap{max-width:1240px;padding:clamp(16px,2.5vw,30px)}
+.menu{background:#fff;border-inline-start:1px solid #e4ebe6;box-shadow:-10px 0 30px #18392e0c}
+.menu a{margin:4px 0;color:#315447;transition:.2s}
+.menu a:hover{background:#eaf4ee;color:#14513d}
+.sbar{max-width:none;width:100%;border-radius:999px;padding:3px 16px;background:#fff;border-color:#e4ebe6;box-shadow:0 3px 12px #18392e05}
+.sbar:focus-within{border-color:#14513d;box-shadow:0 0 0 3px #14513d12}
+.sbar input{padding:12px 4px;background:transparent}
+.grid{gap:16px}
+.tile{background:#fff;border:1px solid #e8eee9;border-top:0;border-radius:18px;padding:20px 16px;box-shadow:0 5px 20px #18392e08;transition:transform .2s,box-shadow .2s}
+.tile:hover{transform:translateY(-3px);box-shadow:0 10px 26px #18392e10}
+.tile h2{color:#14513d;font-size:1.8rem}
+.tile:nth-child(2) h2{color:#7863a8}.tile:nth-child(4) h2{color:#b28b00}
+.sq{aspect-ratio:auto;min-height:150px;background:#fff;border:1px solid #e7eee9;border-bottom:3px solid #14513d;border-radius:16px;padding:18px;box-shadow:0 4px 16px #18392e06;gap:12px;transition:transform .2s,box-shadow .2s}
+.sq:hover{transform:translateY(-3px);border-bottom-color:#7863a8;box-shadow:0 10px 22px #18392e10}
+.row{background:#fff;border-color:#e7eee9;border-radius:15px;padding:14px 16px;box-shadow:0 3px 14px #18392e05}
+.big{background:linear-gradient(115deg,#14513d,#7863a8);border-radius:18px;box-shadow:0 8px 24px #14513d15}
+.banner{margin:22px 0;border-radius:20px;box-shadow:0 8px 26px #18392e12}
+.banner:not(.bimg){background:radial-gradient(ellipse at 15% 15%,#f5c928 0,transparent 32%),linear-gradient(120deg,#14513d 5%,#7863a8 70%,#f5c928 140%);padding:clamp(32px,5vw,58px) 20px}
+.banner.bimg img{border-radius:20px;max-height:360px;object-fit:cover}
+.pen{border:1px solid #e5ece7;background:#fff;color:#14513d;box-shadow:0 4px 14px #18392e20}
+.pen:hover{background:#eaf4ee;transform:translateY(-1px)}
+.pen.bgpen{bottom:18px;inset-inline-start:18px;background:#14513d;color:#fff;border:0;box-shadow:0 8px 24px #14513d30}
+.grp{margin-top:26px;margin-bottom:10px}.grp h3{color:#14513d}
+.foot{padding:11px 14px;margin-top:32px;background:#f0f4f1;border-top:2px solid #7863a8;color:#476255;font-size:.84rem}
+.foot a{color:#14513d}
+.badge{background:#7863a8}.badge.g{background:#e5f3e9;color:#14513d}
+.mod>div{border-top-color:#14513d;box-shadow:0 20px 60px #0002}
+.pbar i{background:linear-gradient(90deg,#14513d,#7863a8,#f5c928)}
+.pct{color:#14513d}
+.auth{--g:#14513d;--g2:#1c674d;--sage:#f0f6f2;--pur:#7863a8;--yel:#f5c928;--mut:#667b70;--ln:#e1eae4}
+.auth .a-info{background:linear-gradient(145deg,#f0f6f2,#f7f5fb);position:relative;overflow:hidden}
+.auth .a-info:after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;background:#f5c92824;left:-100px;bottom:-100px;pointer-events:none}
+.auth .a-form{background-color:#fff;background-image:radial-gradient(#14513d10 1px,transparent 1px);background-size:22px 22px}
+.auth .logo b{width:54px;height:54px;display:grid;place-items:center;border-radius:17px;background:linear-gradient(135deg,#14513d,#7863a8);color:#fff;-webkit-text-fill-color:#fff;font-size:2rem;box-shadow:0 8px 18px #14513d22}
+.auth .logo span{font-size:1.35rem}
+.auth .feat{border-radius:16px}
+.auth .go{background:#14513d}
+@media(max-width:700px){
+ .top{padding:11px 13px}.brandN{font-size:1rem}
+ .wrap{padding:14px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .tile{padding:16px 10px}.tile h2{font-size:1.55rem}
+ .sq{min-height:125px;padding:13px}
+ .banner.bimg img{min-height:150px;object-fit:cover}
+ .btxt{font-size:clamp(1rem,4.2vw,1.5rem)}
+ .pen.bgpen{bottom:12px;inset-inline-start:12px;font-size:.82rem}
+ .foot{padding:10px 8px;line-height:1.9}
+}
+@media(max-width:380px){.grid{grid-template-columns:1fr}.auth .logo span{font-size:1.1rem}}
+
 </style></head><body><div id="app"></div>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
@@ -150,14 +214,14 @@ let unsubs=[],examUnsubs=[],examKey='',SIGNING=false;
 auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(console.error);
 
 const LS={g(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},s(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-const T={ar:{brand:'منصة ماناسا',hero:'تعليمك أساس',login:'تسجيل الدخول',signup:'إنشاء جديد',user:'البريد الإلكتروني',uname:'اسم المستخدم',pass:'كلمة السر (6 أحرف على الأقل)',google:'الدخول بحساب جوجل',fn:'الاسم الأول',sn:'الاسم الثاني',fam:'اسم العائلة',grade:'السنة الدراسية',fp:'رقم الأب',mp:'رقم الأم',ph:'رقم الهاتف الشخصي',gm:'إيميل جوجل',back:'رجوع',home:'الرئيسية',lessons:'الدروس',exams:'الاختبارات',perf:'متابعة الأداء',set:'الإعدادات',out:'تسجيل خروج',students:'الطلاب',teachers:'المدرسين',search:'ابحث عن الدرس',searchS:'ابحث عن طالب',dream:'أنت قادر على تحقيق حلمك',latest:'أحدث الدروس',lang:'اللغة',theme:'الوضع',light:'فاتح',dark:'غامق',none:'لا يوجد شيء متاح لك حاليًا',del:'حذف',addL:'إضافة درس',addE:'إضافة اختبار',title:'العنوان',save:'حفظ',end:'وقت انتهاء الاختبار',dur:'مدة الاختبار (دقائق)',tries:'عدد مرات الفتح',open:'فتح',watch:'اضغط للمشاهدة',ban:'حظر يوم',unban:'فك الحظر',allow:'الدروس المسموحة للطالب',bad:'بيانات الدخول غير صحيحة',banned:'هذا الحساب محظور حتى',req:'املأ كل الخانات (كلمة السر 6 أحرف على الأقل)',closed:'انتهى وقت الاختبار',nomore:'استنفدت عدد المحاولات',nf:'لا توجد نتائج',close:'إغلاق',best:'أقرب نتيجة',dev:'المطور',contact:'للتواصل',devName:'محمد أحمد',joinedAt:'تاريخ التسجيل',allowedN:'الدروس المسموحة',cp:'تغيير كلمة السر',cpOld:'كلمة السر الحالية',cpNew:'كلمة السر الجديدة (6 أحرف على الأقل)',cpConf:'تأكيد كلمة السر الجديدة',cpSave:'حفظ كلمة السر الجديدة',loading:'جارٍ التحميل...',
+const T={ar:{brand:'منصة ماناسا',hero:'تعليمك أساس',login:'تسجيل الدخول',signup:'إنشاء جديد',user:'البريد الإلكتروني',uname:'اسم المستخدم',pass:'كلمة السر (6 أحرف على الأقل)',google:'الدخول بحساب جوجل',fn:'الاسم الأول',sn:'الاسم الثاني',fam:'اسم العائلة',grade:'السنة الدراسية',fp:'رقم الأب',mp:'رقم الأم',ph:'رقم الهاتف الشخصي',gm:'إيميل جوجل',back:'رجوع',home:'الرئيسية',lessons:'الدروس',exams:'الاختبارات',perf:'متابعة الأداء',set:'الإعدادات',out:'تسجيل خروج',students:'الطلاب',teachers:'المدرسين',search:'ابحث عن الدرس',searchS:'ابحث عن طالب',dream:'مستقبلك يبدأ من هنا.. اتعلم النهارده وحقق حلمك بكرة',latest:'أحدث الدروس',lang:'اللغة',theme:'الوضع',light:'فاتح',dark:'غامق',none:'لا يوجد شيء متاح لك حاليًا',del:'حذف',addL:'إضافة درس',addE:'إضافة اختبار',title:'العنوان',save:'حفظ',end:'وقت انتهاء الاختبار',dur:'مدة الاختبار (دقائق)',tries:'عدد مرات الفتح',open:'فتح',watch:'اضغط للمشاهدة',ban:'حظر يوم',unban:'فك الحظر',allow:'الدروس المسموحة للطالب',bad:'بيانات الدخول غير صحيحة',banned:'هذا الحساب محظور حتى',req:'املأ كل الخانات (كلمة السر 6 أحرف على الأقل)',closed:'انتهى وقت الاختبار',nomore:'استنفدت عدد المحاولات',nf:'لا توجد نتائج',close:'إغلاق',best:'أقرب نتيجة',dev:'المطور',contact:'للتواصل',devName:'محمد أحمد',joinedAt:'تاريخ التسجيل',allowedN:'الدروس المسموحة',cp:'تغيير كلمة السر',cpOld:'كلمة السر الحالية',cpNew:'كلمة السر الجديدة (6 أحرف على الأقل)',cpConf:'تأكيد كلمة السر الجديدة',cpSave:'حفظ كلمة السر الجديدة',loading:'جارٍ التحميل...',
 addT:'إضافة مدرس',editT:'تعديل المدرس',tname:'اسم المدرس',temail:'إيميل المدرس (لتسجيل دخوله)',tpass:'كلمة سر المدرس (6 أحرف على الأقل)',photo:'الصورة (اختياري)',sCount:'عدد الطلاب',reqs:'طلبات الانضمام',accept:'قبول',reject:'رفض',joinReq:'طلب انضمام',pending:'تم إرسال الطلب ⏳',joined:'منضم ✓',availT:'المدرسين المتاحين',pickT:'اضغط واختار مدرسك وابعت له طلب انضمام',noT:'لا يوجد مدرسين بعد',setQ:'قم بوضع الأسئلة',addQ:'＋ إضافة سؤال',qText:'نص السؤال',mcq4:'سؤال باختيارات (4 اختيارات)',choice:'الاختيار',answers:'الإجابات',gradeL:'الدرجة',comment:'ملاحظة',gsave:'حفظ الدرجة',waiting:'بانتظار التصحيح',start:'ابدأ',submit:'تسليم',left:'الوقت المتبقي',sent:'تم تسليم إجابتك ✓',resetPw:'كلمة السر',resetSent:'تم إرسال رابط تغيير كلمة السر إلى إيميل الطالب',myProfile:'تعديل اسمي وصورتي',noQ:'لا توجد أسئلة في هذا الاختبار',attempts:'المحاولات',noSubs:'لا توجد إجابات بعد',yourGrade:'درجتك',myStudents:'طلابي',noReq:'لا توجد طلبات',mainT:'المدرس الرئيسي',errG:'حدث خطأ، حاول مرة أخرى',confirmDel:'متأكد من الحذف؟',tAdded:'تم إنشاء حساب المدرس. أعطه الإيميل وكلمة السر.',lessonsN:'دروس',groupsT:'المجموعات',newGroup:'＋ مجموعة جديدة',groupName:'اسم المجموعة',noGroup:'بدون مجموعة',grantG:'المجموعات (كل دروسها)',grantL:'دروس منفردة',profileT:'بياناتي',changePhoto:'تغيير الصورة',allStudents:'كل الطلاب',allT:'كل المدرسين',refresh:'تحديث',resetT:'كلمة السر',resetSentT:'تم إرسال رابط تغيير كلمة السر إلى إيميل المدرس',pwNote:'لا يمكن لأحد رؤية كلمة سر أي مستخدم، لكن يمكنك إرسال رابط يغيّرها بنفسه.',noJoin:'لسه مانضمتش لأي مدرس. افتح «المدرسين» وابعت طلب انضمام.',teacherL:'المدرس',explain:'ملاحظة: لو الطالب مسجل بحساب جوجل فمفيش كلمة سر.',link:'رابط الدرس (يوتيوب أو أي رابط)',nodata:'—',stats:'إحصائيات',msg:'رسالة',msgSel:'رسالة للمحدد',delSel:'حذف المحدد',delAll:'حذف الكل',selAll:'تحديد الكل',to:'إلى',msgText:'اكتب رسالتك للطالب...',send:'إرسال',msgSent:'تم إرسال الرسالة ✓',newL:'جديد',confirmDelOne:'هل تريد حذف هذا الطالب؟',confirmDelN:'هل تريد حذف {n} طالب؟',delNoteT:'سيتم إزالة الطالب من قائمة طلابك وسحب صلاحيات دروسك منه.',delNoteA:'سيتم حذف بيانات الطالب نهائيًا من المنصة.',confirmAll:'⚠️ تنبيه: سيتم حذف جميع الطلاب الظاهرين ({n}) ولا يمكن التراجع.',confirmAll2:'تأكيد أخير: هل أنت متأكد من حذف الكل؟',deleted:'تم الحذف ✓',stickerColor:'لون الملصق',g1:'الصف الأول',g2:'الصف الثاني',g3:'الصف الثالث',noGrade:'بدون صف',pickGrade:'اختر صفك الدراسي',forGrade:'الصف الدراسي',manualGrade:'بدون صف (أحدد الطلاب يدويًا)',allGrades:'كل الصفوف',brandT:'اسم المنصة',brandSaved:'تم حفظ اسم المنصة ✓ وسيظهر للجميع'},
-en:{brand:'Manasa Platform',hero:'Your Education Is the Foundation',login:'Log in',signup:'Sign up',user:'Email',uname:'Username',pass:'Password (min 6 chars)',google:'Sign in with Google',fn:'First name',sn:'Second name',fam:'Family name',grade:'School year',fp:"Father's phone",mp:"Mother's phone",ph:'Personal phone',gm:'Google email',back:'Back',home:'Home',lessons:'Lessons',exams:'Exams',perf:'Performance',set:'Settings',out:'Log out',students:'Students',teachers:'Teachers',search:'Search for a lesson',searchS:'Search students',dream:'You can achieve your dream',latest:'Latest lessons',lang:'Language',theme:'Theme',light:'Light',dark:'Dark',none:'Nothing available for you yet',del:'Delete',addL:'Add lesson',addE:'Add exam',title:'Title',save:'Save',end:'Exam end time',dur:'Duration (minutes)',tries:'Allowed attempts',open:'Open',watch:'Click to watch',ban:'Ban 1 day',unban:'Unban',allow:'Lessons allowed for this student',bad:'Wrong email or password',banned:'This account is banned until',req:'Fill every field (password 6+ chars)',closed:'Exam has ended',nomore:'No attempts left',nf:'No results',close:'Close',best:'Closest match',dev:'Developer',contact:'Contact',devName:'Mohamed Ahmed',joinedAt:'Joined',allowedN:'Allowed lessons',cp:'Change password',cpOld:'Current password',cpNew:'New password (min 6 chars)',cpConf:'Confirm new password',cpSave:'Save new password',loading:'Loading...',
+en:{brand:'Manasa Platform',hero:'Your Education Is the Foundation',login:'Log in',signup:'Sign up',user:'Email',uname:'Username',pass:'Password (min 6 chars)',google:'Sign in with Google',fn:'First name',sn:'Second name',fam:'Family name',grade:'School year',fp:"Father's phone",mp:"Mother's phone",ph:'Personal phone',gm:'Google email',back:'Back',home:'Home',lessons:'Lessons',exams:'Exams',perf:'Performance',set:'Settings',out:'Log out',students:'Students',teachers:'Teachers',search:'Search for a lesson',searchS:'Search students',dream:'Your future starts here. Learn today and achieve your dream tomorrow.',latest:'Latest lessons',lang:'Language',theme:'Theme',light:'Light',dark:'Dark',none:'Nothing available for you yet',del:'Delete',addL:'Add lesson',addE:'Add exam',title:'Title',save:'Save',end:'Exam end time',dur:'Duration (minutes)',tries:'Allowed attempts',open:'Open',watch:'Click to watch',ban:'Ban 1 day',unban:'Unban',allow:'Lessons allowed for this student',bad:'Wrong email or password',banned:'This account is banned until',req:'Fill every field (password 6+ chars)',closed:'Exam has ended',nomore:'No attempts left',nf:'No results',close:'Close',best:'Closest match',dev:'Developer',contact:'Contact',devName:'Mohamed Ahmed',joinedAt:'Joined',allowedN:'Allowed lessons',cp:'Change password',cpOld:'Current password',cpNew:'New password (min 6 chars)',cpConf:'Confirm new password',cpSave:'Save new password',loading:'Loading...',
 addT:'Add teacher',editT:'Edit teacher',tname:'Teacher name',temail:'Teacher email (for login)',tpass:'Teacher password (min 6)',photo:'Photo (optional)',sCount:'Students',reqs:'Join requests',accept:'Accept',reject:'Reject',joinReq:'Request to join',pending:'Request sent ⏳',joined:'Joined ✓',availT:'Available teachers',pickT:'Pick your teacher and send a join request',noT:'No teachers yet',setQ:'Add questions',addQ:'＋ Add question',qText:'Question text',mcq4:'Multiple choice (4 options)',choice:'Option',answers:'Answers',gradeL:'Grade',comment:'Comment',gsave:'Save grade',waiting:'Awaiting grading',start:'Start',submit:'Submit',left:'Time left',sent:'Answers submitted ✓',resetPw:'Password',resetSent:'Password reset link sent to the student\'s email',myProfile:'Edit my name & photo',noQ:'This exam has no questions',attempts:'Attempts',noSubs:'No submissions yet',yourGrade:'Your grade',myStudents:'My students',noReq:'No requests',groupsT:'Groups',newGroup:'＋ New group',groupName:'Group name',noGroup:'No group',grantG:'Groups (all lessons)',grantL:'Single lessons',profileT:'My profile',changePhoto:'Change photo',allStudents:'All students',allT:'All teachers',refresh:'Refresh',resetT:'Password',resetSentT:'Password reset link sent to the teacher\'s email',pwNote:'Nobody can view anyone\'s password, but you can send a reset link.',mainT:'Main teacher',teacherL:'Teacher',groupsT:'Groups',newGroup:'＋ New group',groupName:'Group name',noGroup:'No group',grantG:'Groups (all their lessons)',grantL:'Single lessons',profileT:'My profile',changePhoto:'Change photo',allStudents:'All students',allT:'All teachers',refresh:'Refresh',resetT:'Password',resetSentT:"Password reset link sent to the teacher's email",pwNote:"Nobody can view anyone's password, but you can send a reset link.",link:'Lesson link (YouTube or any link)',confirmDel:'Are you sure?',errG:'Something went wrong, try again',msg:'Message',msgSel:'Message selected',delSel:'Delete selected',delAll:'Delete all',selAll:'Select all',to:'To',msgText:'Write your message to the student...',send:'Send',msgSent:'Message sent ✓',newL:'New',confirmDelOne:'Delete this student?',confirmDelN:'Delete {n} students?',delNoteT:'The student will be removed from your list and lose access to your lessons.',delNoteA:'The student data will be permanently deleted.',confirmAll:'⚠️ Warning: all listed students ({n}) will be deleted. This cannot be undone.',confirmAll2:'Final confirmation: delete all?',deleted:'Deleted ✓',stickerColor:'Sticker color',g1:'First year',g2:'Second year',g3:'Third year',noGrade:'No year',pickGrade:'Choose your school year',forGrade:'School year',manualGrade:'No year (I pick students manually)',allGrades:'All years',brandT:'Platform name',brandSaved:'Platform name saved ✓ everyone will see it'}};
 Object.assign(T.ar,{watched:'تمت المشاهدة',noViews:'استنفدت عدد مرات مشاهدة هذا الدرس. تواصل مع مدرسك.',maxViewsL:'عدد مرات المشاهدة المسموحة لكل طالب (0 = بدون حد)',viewsBtn:'مرات المشاهدة',viewsStat:'طلاب شاهدوا',viewsTot:'إجمالي المشاهدات',viewsTitle:'مشاهدات الدرس',resetV:'تصفير',noViewsYet:'لا توجد مشاهدات بعد',progress:'نسبة إنجازي',pAll:'الكل',pLessons:'الدروس',pExams:'الاختبارات',pDone:'أنجزت',pOf:'من',pOpen:'المتاح لك',pNotYet:'لم يتم بعد',pDoneW:'تم',bannerEdit:'تعديل اللافتة',bannerImg:'صورة اللافتة (أي مقاس)',bannerTxt:'الكلام على اللافتة (اتركه فارغًا لإخفائه)',bannerColor:'لون الكلام',cW:'أبيض',cB:'أسود',cY:'أصفر',rmImg:'إزالة الصورة الحالية',bgEdit:'خلفية الصفحة',bgImg:'صورة الخلفية',imgBig:'الصورة كبيرة جدًا، جرّب صورة أخرى',saved:'تم الحفظ ✓'});
 Object.assign(T.en,{watched:'Watched',noViews:'You used all allowed views of this lesson. Contact your teacher.',maxViewsL:'Allowed views per student (0 = unlimited)',viewsBtn:'Views',viewsStat:'students watched',viewsTot:'total views',viewsTitle:'Lesson views',resetV:'Reset',noViewsYet:'No views yet',progress:'My progress',pAll:'All',pLessons:'Lessons',pExams:'Exams',pDone:'Completed',pOf:'of',pOpen:'available to you',pNotYet:'Not yet',pDoneW:'Done',bannerEdit:'Edit banner',bannerImg:'Banner image (any size)',bannerTxt:'Banner text (leave empty to hide)',bannerColor:'Text color',cW:'White',cB:'Black',cY:'Yellow',rmImg:'Remove current image',bgEdit:'Page background',bgImg:'Background image',imgBig:'Image too large, try another',saved:'Saved ✓'});
-Object.assign(T.ar,{aLogin:'تسجيل دخول',aSignup:'إنشاء حساب',aWelcome:'أهلاً بعودتك',aWelcomeS:'سجل دخولك واكمل رحلة التعلم',aNew:'ابدأ رحلتك الآن',aNewS:'أنشئ حسابك وانضم لأفضل مدرسي مصر',aEmail:'البريد الالكتروني',aPass:'كلمة المرور',aPassPh:'ادخل كلمة المرور',aForgot:'نسيت كلمة المرور؟',aMainT:'أهلاً بك في طريقك للـ 99%',aMainS:'سجل الآن للوصول لأفضل الشروحات والامتحانات والتدريبات مع نخبة من أفضل مدرسي مصر.',aF1:'نخبة من المعلمين المتميزين',aF1s:'شروحات مبسطة من أفضل مدرسي مصر',aF2:'امتحانات وتدريبات مستمرة',aF2s:'اختبارات دورية تقيس مستواك أولاً بأول',aF3:'متابعة فردية دقيقة',aF3s:'تقارير تفصيلية عن أدائك وتقدمك',aLogo:'منصة 99',aFirst:'الاسم الأول',aForgotNeed:'اكتب بريدك الإلكتروني أولاً ثم اضغط «نسيت كلمة المرور؟»',aForgotOk:'تم إرسال رابط تغيير كلمة المرور إلى بريدك'});
-Object.assign(T.en,{aLogin:'Log in',aSignup:'Sign up',aWelcome:'Welcome back',aWelcomeS:'Log in and continue your learning journey',aNew:'Start your journey',aNewS:'Create your account and join Egypt\'s best teachers',aEmail:'Email',aPass:'Password',aPassPh:'Enter your password',aForgot:'Forgot your password?',aMainT:'Welcome to your path to 99%',aMainS:'Sign up now to reach the best lessons, exams and practice with Egypt\'s top teachers.',aF1:'Outstanding teachers',aF1s:'Clear lessons from top teachers',aF2:'Continuous exams & practice',aF2s:'Regular tests that track your level',aF3:'Close individual follow-up',aF3s:'Detailed reports on your progress',aLogo:'Platform 99',aFirst:'First name',aForgotNeed:'Enter your email first, then press Forgot password',aForgotOk:'Password reset link sent to your email'});
+Object.assign(T.ar,{aLogin:'تسجيل دخول',aSignup:'إنشاء حساب',aWelcome:'أهلاً بعودتك',aWelcomeS:'سجل دخولك واكمل رحلة التعلم',aNew:'ابدأ رحلتك الآن',aNewS:'أنشئ حسابك وانضم لأفضل مدرسي مصر',aEmail:'البريد الالكتروني',aPass:'كلمة المرور',aPassPh:'ادخل كلمة المرور',aForgot:'نسيت كلمة المرور؟',aMainT:'أهلاً بك في رحلتك مع منصة ماناسا',aMainS:'سجل الآن للوصول لأفضل الشروحات والامتحانات والتدريبات مع نخبة من أفضل مدرسي مصر.',aF1:'نخبة من المعلمين المتميزين',aF1s:'شروحات مبسطة من أفضل مدرسي مصر',aF2:'امتحانات وتدريبات مستمرة',aF2s:'اختبارات دورية تقيس مستواك أولاً بأول',aF3:'متابعة فردية دقيقة',aF3s:'تقارير تفصيلية عن أدائك وتقدمك',aLogo:'منصة ماناسا',aFirst:'الاسم الأول',aForgotNeed:'اكتب بريدك الإلكتروني أولاً ثم اضغط «نسيت كلمة المرور؟»',aForgotOk:'تم إرسال رابط تغيير كلمة المرور إلى بريدك'});
+Object.assign(T.en,{aLogin:'Log in',aSignup:'Sign up',aWelcome:'Welcome back',aWelcomeS:'Log in and continue your learning journey',aNew:'Start your journey',aNewS:'Create your account and join Egypt\'s best teachers',aEmail:'Email',aPass:'Password',aPassPh:'Enter your password',aForgot:'Forgot your password?',aMainT:'Welcome to your learning journey with Manasa',aMainS:'Sign up now to reach the best lessons, exams and practice with Egypt\'s top teachers.',aF1:'Outstanding teachers',aF1s:'Clear lessons from top teachers',aF2:'Continuous exams & practice',aF2s:'Regular tests that track your level',aF3:'Close individual follow-up',aF3s:'Detailed reports on your progress',aLogo:'Manasa Platform',aFirst:'First name',aForgotNeed:'Enter your email first, then press Forgot password',aForgotOk:'Password reset link sent to your email'});
 const D={lessons:[],exams:[],students:[],reqs:[],subs:[],teachers:[],myReqs:[],examsBy:{},counts:{},groups:[],lessonsA:[],lessonsG:{},all:[],allLoaded:false,msgs:[],views:[]};
 let gUnsubs=[],gKey='';
 const S={lang:LS.g('lang','ar'),theme:LS.g('theme','auto'),view:'intro',user:null,menu:false,bell:false,q:'',sq:'',ft:'',brand:LS.g('brand',''),banner:null,bg:'',pf:'all',pt:''};
@@ -204,7 +268,7 @@ function togglePw(id,b){const i=$('#'+id);if(!i)return;const s=i.type==='passwor
 const enter=f=>`onkeydown="if(event.key==='Enter'){event.preventDefault();${f}()}"`;
 function authPage(mode){const d=S.lang==='ar'?'rtl':'ltr',login=mode==='login';
   const info=`<aside class="a-info" dir="${d}"><div class="a-in" style="max-width:480px;margin-inline:auto">
-    <div class="logo"><b>99%</b><span>${t('aLogo')}</span></div>
+    <div class="logo"><b>م</b><span>منصة ماناسا</span></div>
     <h1>${t('aMainT')}</h1><p class="sub">${t('aMainS')}</p>
     <div class="feat"><div class="ic p">${IC.cap}</div><div><h4>${t('aF1')}</h4><p>${t('aF1s')}</p></div></div>
     <div class="feat"><div class="ic g">${IC.shield}</div><div><h4>${t('aF2')}</h4><p>${t('aF2s')}</p></div></div>
@@ -223,12 +287,12 @@ function authPage(mode){const d=S.lang==='ar'?'rtl':'ltr',login=mode==='login';
      ${afield('gm',t('aEmail'),'email','mail','name@example.com')}
      ${afield('p',t('pass'),'password','lock','',enter('doSignup'))}
      <div class="err" id="e"></div><button class="go" onclick="doSignup()">${t('aSignup')}</button>`;
-  return `<div class="auth">${info}<section class="a-form" dir="${d}"><div class="a-in">${tabs}${body}<a class="bk" onclick="go('intro')">${S.lang==='ar'?'→':'←'} ${t('back')}</a></div></section></div>`}
+  return `<div class="auth">${info}<section class="a-form" dir="${d}"><div class="a-in">${tabs}${body}</div></section></div>`}
 async function forgotPw(){const e=$('#e'),em=$('#u').value.trim().toLowerCase();e.className='err';
   if(!/^\S+@\S+\.\S+$/.test(em)){e.textContent=t('aForgotNeed');return}
   try{await auth.sendPasswordResetEmail(em);e.className='err ok';e.textContent=t('aForgotOk')}catch(err){console.error(err);e.textContent=authMessage(err)}}
 function R(){theme();const a=$('#app');let h='';
-if(S.view==='intro'||(!S.user&&!['login','signup'].includes(S.view)))h=tools()+`<div class="hero0"><h2 class="brandN" style="color:var(--red);margin:0 0 6px">${brand()}</h2><h1>${t('hero')}</h1></div>`;
+if(S.view==='intro'||(!S.user&&!['login','signup'].includes(S.view)))h=authPage('login');
 else if(S.view==='login'||S.view==='signup')h=authPage(S.view);
 else h=app();
 a.innerHTML=`<main>${h}</main>${footer()}`;
