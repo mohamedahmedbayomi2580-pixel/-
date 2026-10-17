@@ -194,6 +194,99 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:#14513d;box-sh
 }
 @media(max-width:380px){.grid{grid-template-columns:1fr}.auth .logo span{font-size:1.1rem}}
 
+/* ================= Manasa Neumorphism v2 ================= */
+:root{--nbg:#e4e7ec;--ncard:#fdfbf4;--nbd:#c4cad6;--nblue:#1f4fc4;--ntext:#2a3f78;--ngreen:#a9e8a0;--npur:#7c5cf0;--nyel:#ffd95a;--nlb:#cfe2ff;--nin-bg:#eceef3;--ndot:#aab1bf;
+ --nsh:7px 7px 16px #b7bdc9,-7px -7px 16px #ffffff;--nsh2:4px 4px 9px #b7bdc9,-4px -4px 9px #ffffff;--nin:inset 3px 3px 7px #c1c7d2,inset -3px -3px 7px #ffffff;
+ --bg:var(--nbg);--fg:var(--ntext);--card:var(--ncard);--bd:var(--nbd);--red:#1f4fc4;--pur:#7c5cf0;--yel:#ffd95a}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--nbg:#2a2d34;--ncard:#33363f;--nbd:#4a4f5c;--nblue:#9bb7ff;--ntext:#d5def7;--nlb:#2f4678;--nin-bg:#262930;--ndot:#464b58;--nsh:7px 7px 16px #1d1f24,-7px -7px 16px #3b3f4a;--nsh2:4px 4px 9px #1d1f24,-4px -4px 9px #3b3f4a;--nin:inset 3px 3px 7px #1d1f24,inset -3px -3px 7px #3b3f4a}}
+:root[data-theme=dark]{--nbg:#2a2d34;--ncard:#33363f;--nbd:#4a4f5c;--nblue:#9bb7ff;--ntext:#d5def7;--nlb:#2f4678;--nin-bg:#262930;--ndot:#464b58;--nsh:7px 7px 16px #1d1f24,-7px -7px 16px #3b3f4a;--nsh2:4px 4px 9px #1d1f24,-4px -4px 9px #3b3f4a;--nin:inset 3px 3px 7px #1d1f24,inset -3px -3px 7px #3b3f4a}
+body{background-color:var(--nbg)!important;background-image:radial-gradient(circle,var(--ndot) 1.1px,transparent 1.5px);background-size:15px 15px;color:var(--ntext)}
+body.hb{background-size:cover}
+h2,h3,h4{color:var(--nblue)}
+.btn{background:var(--ngreen);color:#14391c;border:1px solid #7fcf76;border-radius:16px;box-shadow:var(--nsh2)}
+.btn:hover{box-shadow:var(--nsh);transform:translateY(-1px)}
+.btn.p{background:var(--npur);color:#fff;border-color:#6446d8}
+.btn.y{background:var(--nyel);color:#3a2f00;border-color:#e0b92f}
+.btn.g{background:var(--ncard);color:var(--nblue);border:1px solid var(--nbd)}
+.btn.wide{width:100%;padding:13px;font-size:1.02rem}
+input,select,textarea{background:var(--nin-bg)!important;border:1px solid var(--nbd)!important;color:var(--ntext)!important;box-shadow:var(--nin);border-radius:16px}
+.tile,.sq,.row,.big,.q,.qb,.drop,.box,.note,.banner{border:1px solid var(--nbd)!important;box-shadow:var(--nsh)}
+.tile,.sq,.row,.q,.qb,.drop,.box{background:var(--ncard)}
+.row{border-radius:20px;margin:14px 0;box-shadow:var(--nsh2)}
+.tile,.sq{border-radius:24px}.tile h2{color:var(--nblue)}
+.big{background:var(--ncard);color:var(--nblue)}
+.mod>div{background:var(--ncard);border:1px solid var(--nbd);border-radius:28px;box-shadow:var(--nsh)}
+.badge{background:var(--npur);color:#fff}.badge.g{background:#d9f5d3;color:#14391c}.badge.off{background:#c0392b;color:#fff}
+.pbar{background:#d5d9e1;box-shadow:var(--nin)}.pbar i{background:linear-gradient(90deg,#1a2f87,var(--npur))}.pct{color:var(--nblue)}
+.foot{background:transparent;border-top:1px dashed var(--nbd);color:var(--ntext)}.foot a{color:var(--nblue)}
+a.l{color:var(--nblue)}
+/* ---- القائمة اليمنى ---- */
+.menu{background:var(--ncard);border:1px solid var(--nbd)!important;border-radius:30px 0 0 30px;box-shadow:var(--nsh)!important}
+.menu a{color:var(--nblue);font-weight:800;border-radius:16px;margin:6px 0}
+.menu a:hover{background:var(--ncard);color:var(--nblue);box-shadow:var(--nsh2)}
+.menu a.on{background:var(--nin-bg);box-shadow:var(--nin)}
+.mtop{display:block;width:46px;height:46px;border-radius:50%;margin:0 auto 16px;background:var(--ngreen);border:1px solid #7fcf76;box-shadow:var(--nsh2);cursor:pointer;font-size:1.2rem}
+/* ---- الشريط العلوي ---- */
+.top{border:1px solid var(--nbd)!important;border-radius:24px;background:var(--ncard);box-shadow:var(--nsh);margin:12px 16px 0;gap:14px;top:12px}
+.brandN{color:var(--nblue)!important}
+.tright{display:flex;align-items:center;gap:12px;margin-inline-start:auto}
+.tsw{position:relative}
+.top .sbar{width:min(320px,34vw);background:#d9dde5;box-shadow:var(--nin);border:0;border-radius:999px;padding:2px 14px}
+.top .sbar input{box-shadow:none;background:transparent!important;border:0!important}
+.sres{position:absolute;top:calc(100% + 10px);left:0;width:min(380px,90vw);max-height:60vh;overflow:auto;z-index:8}
+.sres:empty{display:none}
+.bell{width:46px;height:46px;border-radius:50%;background:var(--npur);color:#fff;box-shadow:var(--nsh2);display:grid;place-items:center;font-size:1.15rem;padding:0}
+.bell b{background:var(--nyel);color:#3a2f00;top:-4px;right:-4px}
+.avbtn{background:none;border:0;padding:0;cursor:pointer;border-radius:50%;box-shadow:var(--nsh2)}
+.drop{top:84px}
+@media(min-width:901px){
+ .menu{transform:none!important;right:18px;top:18px;bottom:18px;height:auto;width:208px;border-radius:30px;padding:18px 14px;z-index:7}
+ .ham,.shade{display:none!important}
+ .top{margin-right:244px}
+ .wrap{margin-right:244px;margin-left:auto}
+ body:has(.menu) .foot{margin-right:244px}
+}
+@media(max-width:900px){.top{margin:8px}}
+@media(max-width:700px){.top .brandN{display:none}.top .sbar{width:44vw}}
+/* ---- شبكة 2x2 ---- */
+.nmg{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:22px 0}
+@media(max-width:900px){.nmg{grid-template-columns:1fr}}
+.nmc{background:var(--ncard);border:1px solid var(--nbd);border-radius:30px;padding:24px;min-height:270px;display:flex;flex-direction:column;gap:14px;box-shadow:var(--nsh)}
+.nmc h3{margin:0;color:var(--nblue)}
+.nmc .sm{color:var(--ntext)}
+.stat4{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat4>div{background:var(--nin-bg);box-shadow:var(--nin);border-radius:18px;padding:10px 12px;text-align:center}
+.stat4 b{display:block;font-size:1.5rem;color:var(--nblue)}.stat4 span{font-size:.8rem}
+.avs{display:flex;flex-wrap:wrap;padding-inline-start:10px}
+.avs .av,.avs>div{width:48px;height:48px;font-size:1.1rem;border:3px solid var(--ncard);box-shadow:var(--nsh2);margin-inline-start:-10px}
+.avs>:nth-child(odd){background:var(--nyel);color:#3a2f00}.avs>:nth-child(even){background:var(--npur);color:#fff}
+.lc3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.lc{border-radius:18px;min-height:104px;padding:10px;display:flex;align-items:flex-end;font-weight:800;font-size:.85rem;box-shadow:var(--nsh2);border:1px solid var(--nbd);cursor:pointer;word-break:break-word;background-size:cover;background-position:center}
+.lc.a{background:var(--nlb);color:#173a8a}.lc.b{background:var(--nyel);color:#3a2f00}
+.lc.c{background-color:#9fb4d6;color:#fff;text-shadow:0 1px 6px #000c}
+.lrow{display:flex;justify-content:space-between;align-items:center;gap:10px}.lrow b{color:var(--nblue)}
+.plus{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid #7fcf76;background:var(--ngreen);color:#fff;font-weight:900;font-size:1.25rem;box-shadow:var(--nsh2);cursor:pointer;display:grid;place-items:center;padding:0;text-shadow:0 1px 2px #0003}
+.mini3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:auto 0}
+.mini{aspect-ratio:1;border-radius:20px;background:var(--ncard);border:1px solid var(--nbd);box-shadow:var(--nsh2);display:flex;flex-direction:column;gap:4px;align-items:center;justify-content:center;cursor:pointer;color:var(--npur);font-size:.78rem;font-weight:700;text-align:center;padding:4px}
+.mini svg{width:34px;height:34px}
+.nbar{height:16px;border-radius:10px;background:#d5d9e1;box-shadow:var(--nin);overflow:hidden}.nbar i{display:block;height:100%;background:#1a2f87;border-radius:10px;transition:width .4s}
+.annb{display:flex;gap:12px;align-items:flex-start;background:var(--ac,#fff176);color:#222;border:1px solid var(--nbd);border-radius:22px;padding:14px 16px;margin:14px 0;box-shadow:var(--nsh2)}
+.annb.warn{--ac:#ffe0b2}
+.twrap{overflow-x:auto;border-radius:20px;background:var(--ncard);border:1px solid var(--nbd);box-shadow:var(--nsh2);margin:12px 0}
+.tbl{width:100%;border-collapse:collapse;font-size:.88rem}.tbl th,.tbl td{padding:9px 12px;border-bottom:1px solid var(--nbd);text-align:start;white-space:nowrap}.tbl th{color:var(--nblue)}
+/* ---- صفحة الدخول ---- */
+.auth{--g:#1f4fc4;--g2:#2a5fd8;--sage:#e4e7ec;--pur:#7c5cf0;--yel:#ffd95a;--mut:#56648c;--ln:#c4cad6}
+.auth .a-info{background:transparent}.auth .a-info:after{display:none}
+.auth .a-form{background-color:#e4e7ec;background-image:radial-gradient(circle,#aab1bf 1.1px,transparent 1.5px);background-size:15px 15px}
+.auth .feat{background:#fdfbf4;border:1px solid #c4cad6;border-radius:22px;box-shadow:var(--nsh2)}
+.auth .tab{background:#e4e7ec;box-shadow:var(--nsh2);color:#2a3f78}.auth .tab.on{background:#1f4fc4;color:#fff;box-shadow:var(--nin)}
+.auth .inp input{background:#eceef3!important;box-shadow:inset 3px 3px 7px #c1c7d2,inset -3px -3px 7px #fff;border:1px solid #c4cad6!important;color:#2a3f78!important}
+.auth .go{background:#a9e8a0;color:#14391c;border:1px solid #7fcf76;box-shadow:var(--nsh2)}.auth .go:hover{background:#9ae090}
+.auth .ft h2,.auth h1,.auth label.lb2,.auth .feat h4,.auth .logo span{color:#1f4fc4}
+.auth .logo b{background:linear-gradient(135deg,#1f4fc4,#7c5cf0)}
+.pen.bgpen{background:var(--ngreen)!important;color:#14391c!important;border:1px solid #7fcf76!important;box-shadow:var(--nsh2)!important}
+.pen{background:var(--ncard);color:var(--nblue);border:1px solid var(--nbd);box-shadow:var(--nsh2)}
+
 </style></head><body><div id="app"></div>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
@@ -222,7 +315,7 @@ Object.assign(T.ar,{watched:'تمت المشاهدة',noViews:'استنفدت ع
 Object.assign(T.en,{watched:'Watched',noViews:'You used all allowed views of this lesson. Contact your teacher.',maxViewsL:'Allowed views per student (0 = unlimited)',viewsBtn:'Views',viewsStat:'students watched',viewsTot:'total views',viewsTitle:'Lesson views',resetV:'Reset',noViewsYet:'No views yet',progress:'My progress',pAll:'All',pLessons:'Lessons',pExams:'Exams',pDone:'Completed',pOf:'of',pOpen:'available to you',pNotYet:'Not yet',pDoneW:'Done',bannerEdit:'Edit banner',bannerImg:'Banner image (any size)',bannerTxt:'Banner text (leave empty to hide)',bannerColor:'Text color',cW:'White',cB:'Black',cY:'Yellow',rmImg:'Remove current image',bgEdit:'Page background',bgImg:'Background image',imgBig:'Image too large, try another',saved:'Saved ✓'});
 Object.assign(T.ar,{aLogin:'تسجيل دخول',aSignup:'إنشاء حساب',aWelcome:'أهلاً بعودتك',aWelcomeS:'سجل دخولك واكمل رحلة التعلم',aNew:'ابدأ رحلتك الآن',aNewS:'أنشئ حسابك وانضم لأفضل مدرسي مصر',aEmail:'البريد الالكتروني',aPass:'كلمة المرور',aPassPh:'ادخل كلمة المرور',aForgot:'نسيت كلمة المرور؟',aMainT:'أهلاً بك في رحلتك مع منصة ماناسا',aMainS:'سجل الآن للوصول لأفضل الشروحات والامتحانات والتدريبات مع نخبة من أفضل مدرسي مصر.',aF1:'نخبة من المعلمين المتميزين',aF1s:'شروحات مبسطة من أفضل مدرسي مصر',aF2:'امتحانات وتدريبات مستمرة',aF2s:'اختبارات دورية تقيس مستواك أولاً بأول',aF3:'متابعة فردية دقيقة',aF3s:'تقارير تفصيلية عن أدائك وتقدمك',aLogo:'منصة ماناسا',aFirst:'الاسم الأول',aForgotNeed:'اكتب بريدك الإلكتروني أولاً ثم اضغط «نسيت كلمة المرور؟»',aForgotOk:'تم إرسال رابط تغيير كلمة المرور إلى بريدك'});
 Object.assign(T.en,{aLogin:'Log in',aSignup:'Sign up',aWelcome:'Welcome back',aWelcomeS:'Log in and continue your learning journey',aNew:'Start your journey',aNewS:'Create your account and join Egypt\'s best teachers',aEmail:'Email',aPass:'Password',aPassPh:'Enter your password',aForgot:'Forgot your password?',aMainT:'Welcome to your learning journey with Manasa',aMainS:'Sign up now to reach the best lessons, exams and practice with Egypt\'s top teachers.',aF1:'Outstanding teachers',aF1s:'Clear lessons from top teachers',aF2:'Continuous exams & practice',aF2s:'Regular tests that track your level',aF3:'Close individual follow-up',aF3s:'Detailed reports on your progress',aLogo:'Manasa Platform',aFirst:'First name',aForgotNeed:'Enter your email first, then press Forgot password',aForgotOk:'Password reset link sent to your email'});
-const D={lessons:[],exams:[],students:[],reqs:[],subs:[],teachers:[],myReqs:[],examsBy:{},counts:{},groups:[],lessonsA:[],lessonsG:{},all:[],allLoaded:false,msgs:[],views:[]};
+const D={lessons:[],exams:[],students:[],reqs:[],subs:[],teachers:[],myReqs:[],examsBy:{},counts:{},groups:[],lessonsA:[],lessonsG:{},all:[],allLoaded:false,msgs:[],views:[],adm:{loaded:false,lessons:[],exams:[],subs:[],views:[]}};
 let gUnsubs=[],gKey='';
 const S={lang:LS.g('lang','ar'),theme:LS.g('theme','auto'),view:'intro',user:null,menu:false,bell:false,q:'',sq:'',ft:'',brand:LS.g('brand',''),banner:null,bg:'',pf:'all',pt:''};
 const t=k=>(T[S.lang]&&T[S.lang][k])||T.ar[k]||k,$=s=>document.querySelector(s);
@@ -297,24 +390,27 @@ else if(S.view==='login'||S.view==='signup')h=authPage(S.view);
 else h=app();
 a.innerHTML=`<main>${h}</main>${footer()}`;
 if(S.view==='teachers'&&isAdmin())loadCounts();
-if(S.view==='students'&&isAdmin()&&!D.allLoaded){D.allLoaded=true;loadAllStudents()}}
+if(isAdmin()&&['home','teachers','reports'].includes(S.view)&&!D.adm.loaded)loadAdm();
+if(['students','home','teachers','reports'].includes(S.view)&&isAdmin()&&!D.allLoaded){D.allLoaded=true;loadAllStudents()}
+if(S.q&&$('#res'))doSearch()}
 
 const teacherCards=()=>D.teachers.filter(x=>x.id!==S.user.id).map(x=>{const j=(S.user.teachers||[]).includes(x.id),p=D.myReqs.some(r=>r.teacherId===x.id);return `<div class="row"><div class="who">${av(x)}<b>${esc(x.name)}</b></div><div>${j?`<span class="badge g">${t('joined')}</span>`:p?`<span class="sm">${t('pending')}</span> <button class="btn g s" onclick="cancelReq('${esc(x.id)}')">✖</button>`:`<button class="btn p" onclick="askGrade('${esc(x.id)}')">${t('joinReq')}</button>`}</div></div>`}).join('')||`<p>${t('noT')}</p>`;
 function app(){const v=S.view,ls=[...D.lessons].sort(byNew),T_=isT();
-const items=T_?[['home','🏠'],['lessons','📖'],['exams','📄'],['students','👥'],...(isAdmin()?[['teachers','🧑‍🏫']]:[]),['set','⚙️']]:[['home','🏠'],['teachers','🧑‍🏫'],['lessons','📖'],['exams','📄'],['perf','📈'],['set','⚙️']];
+const items=T_?[['home','🏠'],['lessons','📖'],['exams','📄'],['students','👥'],['reports','📊'],...(isAdmin()?[['teachers','🧑‍🏫']]:[]),['set','⚙️']]:[['home','🏠'],['teachers','🧑‍🏫'],['lessons','📖'],['exams','📄'],['perf','📈'],['set','⚙️']];
 const watch=l=>lessonOut(l)?`<button class="btn g" disabled>🚫 ${t('watched')} ${vc(l.id)}/${+l.maxViews}</button>`:`<button class="btn p" onclick="view('${esc(l.id)}')">${watched(l.id)?'↻':'▶'} ${t('watch')}</button>`;
-let h=`<div class="top"><button class="ham" onclick="S.menu=true;R()"><i></i><i></i><i></i></button><span class="brandN" style="font-weight:900;color:var(--red)">${brand()}</span><div style="display:flex;align-items:center;gap:8px"><button class="avbtn" onclick="myPhoto()" title="${t('profileT')}">${avSm(myCard())}</button><button class="bell" onclick="toggleBell()">🔔${T_?`<b>${ls.length}</b>`:((D.msgs||[]).some(m=>!m.read)?`<b>${(D.msgs||[]).filter(m=>!m.read).length}</b>`:'')}</button></div></div>`;
+let h=`<div class="top"><button class="ham" onclick="S.menu=true;R()"><i></i><i></i><i></i></button><span class="brandN" style="font-weight:900;color:var(--red)">${brand()}</span><div class="tright"><button class="avbtn" onclick="myPhoto()" title="${t('profileT')}">${avSm(myCard())}</button><button class="bell" onclick="toggleBell()">🔔${T_?`<b>${ls.length}</b>`:((D.msgs||[]).some(m=>!m.read)?`<b>${(D.msgs||[]).filter(m=>!m.read).length}</b>`:'')}</button><div class="tsw"><div class="sbar">🔍<input id="q" value="${esc(S.q)}" placeholder="${t('search')}" oninput="S.q=this.value;doSearch()"></div><div id="res" class="sres"></div></div></div></div>`;
 if(S.bell)h+=`<div class="drop">${T_?'':(D.msgs||[]).map(noteH).join('')}${ls.slice(0,4).map(l=>`<div class="sm" style="padding:6px 0">📘 ${esc(l.title)}</div>`).join('')||((!T_&&(D.msgs||[]).length)?'':`<div class="sm">${t('none')}</div>`)}</div>`;
 if(S.menu)h+=`<div class="shade" onclick="S.menu=false;R()"></div>`;
-h+=`<div class="menu ${S.menu?'o':''}">${items.map(i=>`<a onclick="go('${i[0]}')">${i[1]} ${t(i[0])}</a>`).join('')}<a onclick="logout()">🚪 ${t('out')}</a></div><div class="wrap">`;
+h+=`<div class="menu ${S.menu?'o':''}">${`<button class="mtop" onclick="go('home')" title="${t('home')}">🏠</button>`+items.map(i=>`<a class="${S.view===i[0]?'on':''}" onclick="go('${i[0]}')">${i[1]} ${t(i[0])}</a>`).join('')}<a onclick="logout()">🚪 ${t('out')}</a></div><div class="wrap">`;
 
-if(v==='home'){
+if(v==='home'&&(isAdmin()||!T_))h+=homeNM(ls);
+if(v==='home'&&!(isAdmin()||!T_)){
   if(T_)h+=`<div class="grid" style="margin-top:14px"><div class="tile" onclick="go('students')">👥<h2>${D.students.length}</h2>${t('myStudents')}</div><div class="tile" onclick="go('students')">📨<h2>${D.reqs.length}</h2>${t('reqs')}</div><div class="tile" onclick="go('lessons')">📖<h2>${ls.length}</h2>${t('lessons')}</div><div class="tile" onclick="go('exams')">📄<h2>${D.exams.length}</h2>${t('exams')}</div></div>`;
   else h+=`<h3 style="margin-bottom:0">🧑‍🏫 ${t('availT')} (${D.teachers.length})</h3><p class="sm" style="margin-top:4px">${(S.user.teachers||[]).length?'':t('noJoin')}</p>${teacherCards()}`;
-  h+=`<div class="sbar" style="margin-top:12px">🔍<input id="q" value="${esc(S.q)}" placeholder="${t('search')}" oninput="S.q=this.value;doSearch()"></div><div id="res"></div>${bannerH()}${isAdmin()?`<button class="pen bgpen" onclick="editBg()">✏️ ${t('bgEdit')}</button>`:''}<h3>${t('latest')}</h3><div class="grid">${ls.map(l=>`<div class="sq" onclick="view('${esc(l.id)}')"><span>📘</span><b>${esc(l.title)}</b><small>${watched(l.id)?'✓ '+t('watched'):'▶ '+t('watch')}</small></div>`).join('')||`<p>${t('none')}</p>`}</div>`}
+  h+=`${bannerH()}${isAdmin()?`<button class="pen bgpen" onclick="editBg()">✏️ ${t('bgEdit')}</button>`:''}<h3>${t('latest')}</h3><div class="grid">${ls.map(l=>`<div class="sq" onclick="view('${esc(l.id)}')"><span>📘</span><b>${esc(l.title)}</b><small>${watched(l.id)?'✓ '+t('watched'):'▶ '+t('watch')}</small></div>`).join('')||`<p>${t('none')}</p>`}</div>`}
 
 if(v==='teachers'){
-  if(isAdmin()){h+=`<h2>${t('teachers')}</h2><button class="btn" onclick="teacherForm()">＋ ${t('addT')}</button>${D.teachers.map(x=>`<div class="row"><div class="who">${av(x)}<div><b>${esc(x.name)}</b>${x.id===S.user.id?` <span class="badge">${t('mainT')}</span>`:''}<div class="sm">${t('sCount')}: <b id="cnt_${esc(x.id)}">…</b></div></div></div><div><button class="btn g s" onclick="teacherForm('${esc(x.id)}')">✏️ ${t('editT')}</button> <button class="btn g s" onclick="resetTeacherPw('${esc(x.id)}')">🔑 ${t('resetT')}</button>${x.id!==S.user.id?` <button class="btn s" onclick="delTeacher('${esc(x.id)}')">🗑</button>`:''}</div></div>`).join('')||`<p>${t('noT')}</p>`}`}
+  if(isAdmin()){h+=`<h2>${t('teachers')}</h2><button class="btn" onclick="teacherForm()">＋ ${t('addT')}</button>${D.teachers.map(x=>`<div class="row"><div class="who">${av(x)}<div><b>${esc(x.name)}</b>${x.id===S.user.id?` <span class="badge">${t('mainT')}</span>`:''}<div class="sm">${t('sCount')}: <b id="cnt_${esc(x.id)}">…</b></div>${tAct(x)}</div></div><div><button class="btn g s" onclick="teacherForm('${esc(x.id)}')">✏️ ${t('editT')}</button> <button class="btn g s" onclick="resetTeacherPw('${esc(x.id)}')">🔑 ${t('resetT')}</button>${x.id!==S.user.id?` <button class="btn ${x.off?'':'y'} s" onclick="togTeacher('${esc(x.id)}')">${x.off?'✅ '+t('activate'):'⛔ '+t('suspend')}</button> <button class="btn s" onclick="delTeacher('${esc(x.id)}')">🗑</button>`:''}</div></div>`).join('')||`<p>${t('noT')}</p>`}`}
   else{h+=`<h2>${t('availT')}</h2><p class="sm">${t('pickT')}</p>${teacherCards()}`}
 }
 
@@ -332,12 +428,13 @@ if(v==='exams'){h+=`<h2>${t('exams')}</h2>${T_?`<button class="btn" onclick="add
     const gr=[...mine].filter(s=>s.grade!=null).sort((a,b)=>tsec(b.at)-tsec(a.at))[0],tc=D.teachers.find(x=>x.id===e.teacherId);
     return `<div class="row"><div><b>📄 ${esc(e.title)}</b>${tc?` <span class="sm">· ${esc(tc.name)}</span>`:''}<div class="sm">${new Date(e.end).toLocaleString()} · ${e.dur}m · ${t('attempts')}: ${mine.length}/${e.tries}</div>${gr?`<div class="ok">${t('yourGrade')}: <b>${esc(gr.grade)}</b>${gr.comment?' — '+esc(gr.comment):''}</div>`:mine.length?`<div class="sm">${t('waiting')}</div>`:''}</div><div><button class="btn p" onclick="startExam('${esc(e.id)}')">${t('start')}</button></div></div>`}).join('')||`<p>${t('none')}</p>`}
 
-if(v==='perf'){const subs=[...D.subs].sort((a,b)=>tsec(b.at)-tsec(a.at));h+=`<h2>${t('perf')}</h2><div class="grid"><div class="tile">📖<h2>${ls.length}</h2>${t('lessons')}</div><div class="tile">📄<h2>${subs.length}</h2>${t('exams')}</div></div>${perfProgress()}<h3>${t('exams')}</h3>${subs.map(s=>{const e=D.exams.find(x=>x.id===s.examId);return `<div class="row"><div><b>${esc(e?e.title:'')}</b><div class="sm">${esc(tstr(s.at))}</div></div><div>${s.grade!=null?`<span class="badge g">${t('yourGrade')}: ${esc(s.grade)}</span>${s.comment?`<div class="sm">${esc(s.comment)}</div>`:''}`:`<span class="sm">${t('waiting')}</span>`}</div></div>`}).join('')||`<p>${t('none')}</p>`}`}
+if(v==='perf'){const subs=[...D.subs].sort((a,b)=>tsec(b.at)-tsec(a.at));h+=`<h2>${t('perf')}</h2><div class="grid"><div class="tile">📖<h2>${ls.length}</h2>${t('lessons')}</div><div class="tile">📄<h2>${subs.length}</h2>${t('exams')}</div></div>${perfStats()}${perfProgress()}<h3>${t('exams')}</h3>${subs.map(s=>{const e=D.exams.find(x=>x.id===s.examId);return `<div class="row"><div><b>${esc(e?e.title:'')}</b><div class="sm">${esc(tstr(s.at))}</div></div><div>${s.grade!=null?`<span class="badge g">${t('yourGrade')}: ${esc(s.grade)}</span>${s.comment?`<div class="sm">${esc(s.comment)}</div>`:''}`:`<span class="sm">${t('waiting')}</span>`}</div></div>`}).join('')||`<p>${t('none')}</p>`}`}
 
 if(v==='set')h+=`<h2>${t('set')}</h2><div class="row"><b>${t('lang')}</b><select style="width:auto" onchange="S.lang=this.value;LS.s('lang',S.lang);R()"><option value="ar" ${S.lang==='ar'?'selected':''}>العربية</option><option value="en" ${S.lang==='en'?'selected':''}>English</option></select></div><div class="row"><b>${t('theme')}</b><div><button class="btn g" onclick="S.theme='light';LS.s('theme','light');R()">☀️ ${t('light')}</button> <button class="btn g" onclick="S.theme='dark';LS.s('theme','dark');R()">🌙 ${t('dark')}</button></div></div>${T_?`<div class="row"><b>${t('myProfile')}</b><button class="btn p" onclick="teacherForm('${esc(S.user.id)}')">✏️</button></div>`:''}${isAdmin()?`<h3>🏷️ ${t('brandT')}</h3><input id="bn" maxlength="40" value="${esc(S.brand||t('brand'))}"><div class="err" id="bnerr"></div><button class="btn p" onclick="saveBrand(this)">${t('save')}</button>`:''}<h3>🔒 ${t('cp')}</h3><input id="oldpw" type="password" autocomplete="current-password" placeholder="${t('cpOld')}"><input id="newpw" type="password" autocomplete="new-password" placeholder="${t('cpNew')}"><input id="confpw" type="password" autocomplete="new-password" placeholder="${t('cpConf')}"><div class="err" id="pwerr"></div><button class="btn p" onclick="changePassword()">${t('cpSave')}</button>`;
 
 if(v==='students'){const adm=isAdmin(),src=adm?D.all:D.students;
   h+=`<h2>${adm?t('allStudents'):t('myStudents')} (${src.length}) ${adm?`<button class="btn g s" onclick="loadAllStudents()">⟳ ${t('refresh')}</button>`:''}</h2>${D.reqs.length?`<h3>📨 ${t('reqs')} (${D.reqs.length})</h3>${D.reqs.map(r=>`<div class="row"><div><b>${esc(r.name)}</b> <span class="badge">🎓 ${gname(r.grade||'')}</span></div><div><button class="btn p s" onclick="acceptReq('${esc(r.id)}')">${t('accept')}</button> <button class="btn s" onclick="rejectReq('${esc(r.id)}')">${t('reject')}</button></div></div>`).join('')}`:''}<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><div class="sbar">🔍<input id="sq" value="${esc(S.sq)}" placeholder="${t('searchS')}" oninput="S.sq=this.value;drawStudents()"></div>${adm?`<select style="width:auto" onchange="S.ft=this.value;drawStudents()"><option value="">${t('allT')}</option>${D.teachers.map(x=>`<option value="${esc(x.id)}" ${S.ft===x.id?'selected':''}>${esc(x.name)}</option>`).join('')}</select>`:''}</div><div id="st">${stList(S.sq)}</div>`}
+if(v==='reports')h+=reportsPage();
 return h+'</div>'}
 
 /* ---------- students (teacher) ---------- */
@@ -387,7 +484,7 @@ async function sendReq(tid,g,b){if(!['1','2','3'].includes(g))return;if(b)b.disa
 async function cancelReq(tid){try{await fsdb.collection('requests').doc(S.user.id+'_'+tid).delete()}catch(e){console.error(e)}}
 
 /* ---------- admin helpers ---------- */
-async function loadAllStudents(){try{const s=await fsdb.collection('users').where('role','==','s').get();D.all=s.docs.map(mk);D.allLoaded=true;if(S.view==='students')drawStudents()}catch(e){console.error(e)}}
+async function loadAllStudents(){try{const s=await fsdb.collection('users').where('role','==','s').get();D.all=s.docs.map(mk);D.allLoaded=true;if(S.view==='students')drawStudents();else rerender()}catch(e){console.error(e)}}
 async function resetTeacherPw(tid){try{const d=await fsdb.collection('users').doc(tid).get();const em=d.exists&&d.data().email;if(!em)return alert(t('errG'));await auth.sendPasswordResetEmail(em);modal(`<p class="ok">${t('resetSentT')}</p><p class="sm">${esc(em)}<br>${t('pwNote')}</p>`)}catch(e){console.error(e);alert(t('errG')+' '+(e.code||''))}}
 /* ---------- profile ---------- */
 function profile(){if(isT()){teacherForm(S.user.id);return}const u=S.user;const names=(u.teachers||[]).map(id=>(D.teachers.find(x=>x.id===id)||{}).name).filter(Boolean).join('، ');
@@ -460,7 +557,7 @@ async function doSignup(){
 }
 async function resetOld(em){const e=$('#e');try{await auth.sendPasswordResetEmail(em);e.className='ok';e.textContent=S.lang==='ar'?'تم إرسال الرابط لإيميلك. غيّر كلمة السر ثم ارجع اضغط «إنشاء جديد» بنفس الإيميل وكلمة السر الجديدة.':'Link sent. Reset your password, then sign up again with the same email and the new password.'}catch(err){console.error(err);e.textContent=authMessage(err)}}
 function stop(){[...unsubs,...examUnsubs,...gUnsubs].forEach(f=>{try{f()}catch(e){}});unsubs=[];examUnsubs=[];gUnsubs=[];examKey='';gKey='';
-  Object.assign(D,{lessons:[],exams:[],students:[],reqs:[],subs:[],teachers:[],myReqs:[],examsBy:{},counts:{},groups:[],lessonsA:[],lessonsG:{},all:[],allLoaded:false,msgs:[],views:[]})}
+  Object.assign(D,{lessons:[],exams:[],students:[],reqs:[],subs:[],teachers:[],myReqs:[],examsBy:{},counts:{},groups:[],lessonsA:[],lessonsG:{},all:[],allLoaded:false,msgs:[],views:[],adm:{loaded:false,lessons:[],exams:[],subs:[],views:[]}})}
 async function afterLogin(user){
   stop();
   if(user.email===TEACHER){
@@ -470,7 +567,7 @@ async function afterLogin(user){
   let p=null;try{const s=await fsdb.collection('users').doc(user.uid).get();p=s.exists?s.data():null}catch(err){console.error(err)}
   if(!p){await auth.signOut();S.view='login';R();const e=$('#e');if(e)e.textContent=t('bad');return}
   if(p.ban&&p.ban>Date.now()){await auth.signOut();S.view='login';R();const e=$('#e');if(e)e.textContent=t('banned')+' '+new Date(p.ban).toLocaleString();return}
-  if(p.role==='t'){S.user={...p,id:user.uid,role:'t',admin:false};S.view='home';startTeacher();R();return}
+  if(p.role==='t'){try{const td=await fsdb.collection('teachers').doc(user.uid).get();if(td.exists&&td.data().off){await auth.signOut();S.view='login';R();const e=$('#e');if(e)e.textContent=t('tOffMsg');return}}catch(err){console.error(err)}S.user={...p,id:user.uid,role:'t',admin:false};S.view='home';startTeacher();R();return}
   S.user={...p,id:user.uid,email:user.email||'',role:'s',teachers:p.teachers||[]};S.view='home';startStudent();R();
 }
 function on(q,fn){unsubs.push(q.onSnapshot(fn,e=>console.error('listener',e)))}
@@ -481,7 +578,7 @@ function startTeacher(){const me=S.user.id,c=n=>fsdb.collection(n);
   on(c('requests').where('teacherId','==',me),s=>{D.reqs=s.docs.map(mk);rerender()});
   on(c('exams').where('teacherId','==',me),s=>{D.exams=s.docs.map(mk);rerender()});
   on(c('submissions').where('teacherId','==',me),s=>{D.subs=s.docs.map(mk);rerender()});
-  on(c('teachers'),s=>{D.teachers=s.docs.map(mk);rerender()});
+  on(c('teachers'),s=>{D.teachers=s.docs.map(mk);const m_=D.teachers.find(x=>x.id===S.user.id);if(m_&&m_.off&&!isAdmin()){alert(t('tOffMsg'));logout();return}rerender()});
   on(c('lessonViews').where('teacherId','==',me),s=>{D.views=s.docs.map(mk);rerender()});
 }
 function startStudent(){const me=S.user.id,c=n=>fsdb.collection(n);
@@ -661,6 +758,96 @@ async function saveBg(b){const f=$('#bgf').files[0],rm=$('#bgrm')&&$('#bgrm').ch
   catch(e){console.error(e);er.textContent=e.message==='big'?t('imgBig'):t('errG')+' '+(e.code||'');b.disabled=false}}
 fsdb.collection('settings').doc('banner').onSnapshot(sn=>{S.banner=sn.exists?sn.data():null;rerender()},e=>console.error('banner',e));
 fsdb.collection('settings').doc('bg').onSnapshot(sn=>{S.bg=sn.exists?(sn.data().img||''):'';if(S.user){theme();rerender()}},e=>console.error('bg',e));
+
+/* ================= إضافات ماناسا v2 ================= */
+Object.assign(T.ar,{reports:'التقارير',overview:'نظرة عامة',upcoming:'امتحانات قادمة',noReq:'لا توجد طلبات',noUp:'لا توجد امتحانات قادمة 🎉',announce:'إعلان عام',annText:'اكتب الإعلان اللي هيوصل لكل الطلاب',annSend:'نشر الإعلان',annClear:'حذف الإعلان',annSent:'تم نشر الإعلان ✓',annNote:'ملاحظة: الإعلان يظهر لكل مستخدمي المنصة.',suspend:'إيقاف',activate:'تفعيل',suspended:'موقوف',confirmSusp:'إيقاف هذا المدرس؟ لن يستطيع الدخول أو تعديل أي شيء.',tOffMsg:'تم إيقاف حسابك من إدارة المنصة.',ungraded:'بدون تصحيح',lastAct:'آخر نشاط',exportRes:'تصدير الدرجات (Excel)',exportStu:'تصدير الطلاب (Excel)',allExams:'كل الامتحانات',colName:'الطالب',colPhone:'الهاتف',colYear:'الصف',colDate:'التاريخ',colEmail:'الإيميل',avgG:'متوسط الدرجات',bestG:'أعلى درجة',subsN:'عدد التسليمات',watchedL:'دروس شاهدتها',examSoon:'امتحان ينتهي قريبًا!',dayU:'يوم',hourU:'ساعة',minU:'دقيقة',ended:'انتهى',gradedP:'تم تصحيحه',loadingD:'جاري تحميل البيانات…',noData:'لا توجد بيانات',rows:'سجل',avgL:'المتوسط',myProg:'نسبة إنجازي',mT:'مدرسيني'});
+Object.assign(T.en,{reports:'Reports',overview:'Overview',upcoming:'Upcoming exams',noReq:'No requests',noUp:'No upcoming exams 🎉',announce:'Announcement',annText:'Write the announcement for all students',annSend:'Publish',annClear:'Delete announcement',annSent:'Announcement published ✓',annNote:'Note: the announcement is visible to everyone using the platform.',suspend:'Suspend',activate:'Activate',suspended:'Suspended',confirmSusp:'Suspend this teacher? They will not be able to sign in or change anything.',tOffMsg:'Your account was suspended by the platform admin.',ungraded:'ungraded',lastAct:'Last activity',exportRes:'Export grades (Excel)',exportStu:'Export students (Excel)',allExams:'All exams',colName:'Student',colPhone:'Phone',colYear:'Year',colDate:'Date',colEmail:'Email',avgG:'Average grade',bestG:'Best grade',subsN:'Submissions',watchedL:'Lessons watched',examSoon:'Exam ending soon!',dayU:'d',hourU:'h',minU:'m',ended:'Ended',gradedP:'graded',loadingD:'Loading data…',noData:'No data',rows:'rows',avgL:'Average',myProg:'My progress',mT:'My teachers'});
+
+const NI={doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h6"/></svg>'};
+const mini=(v,label)=>`<div class="mini" onclick="go('${v}')">${NI.doc}<span>${label}</span></div>`;
+const colOk=c=>/^#[0-9a-f]{6}$/i.test(c||'')?c:COLORS[0];
+
+/* ---- بيانات المدرس الرئيسي (تحميل مرة واحدة + تحديث يدوي) ---- */
+async function loadAdm(force){if(!isAdmin()||D.adm.busy)return;if(D.adm.loaded&&!force)return;D.adm.busy=true;
+ try{const c=n=>fsdb.collection(n).get();const r=await Promise.all([c('lessons'),c('exams'),c('submissions'),c('lessonViews')]);
+  D.adm={loaded:true,busy:false,lessons:r[0].docs.map(mk),exams:r[1].docs.map(mk),subs:r[2].docs.map(mk),views:r[3].docs.map(mk)}}
+ catch(e){console.error(e);D.adm.busy=false;D.adm.loaded=true;D.adm.err=true}
+ rerender()}
+
+/* ---- إعلان عام ---- */
+const annBar=(a,adm)=>`<div class="annb" style="--ac:${colOk(a.color)}"><span>📢</span><div style="flex:1"><b>${t('announce')}</b><div style="white-space:pre-wrap;word-break:break-word">${esc(a.text)}</div></div>${adm?`<button class="btn s" onclick="annModal()">✏️</button>`:`<button class="btn g s" onclick="LS.s('annSeen','${esc(a.id||'')}');R()">✖</button>`}</div>`;
+function annModal(){const a=S.ann||{};modal(`<h3>📢 ${t('announce')}</h3><textarea id="an" rows="4" maxlength="500" placeholder="${t('annText')}">${esc(a.text||'')}</textarea><div class="sm">${t('stickerColor')}</div><div style="display:flex;gap:10px;margin:6px 0 10px">${COLORS.map((c,i)=>`<label style="cursor:pointer;display:flex;align-items:center;gap:4px"><input type="radio" name="ac" value="${c}" ${(a.color?a.color===c:!i)?'checked':''} style="width:auto;margin:0"><span style="width:26px;height:26px;border-radius:6px;display:inline-block;border:1px solid #0004;background:${c}"></span></label>`).join('')}</div><div class="err" id="anerr"></div><button class="btn" onclick="saveAnn(this)">${t('annSend')}</button> ${a.text?`<button class="btn g" onclick="clearAnn(this)">${t('annClear')}</button>`:''}<p class="sm">${t('annNote')}</p>`)}
+async function saveAnn(b){const tx=$('#an').value.trim(),er=$('#anerr');if(!tx){er.textContent=t('annText');return}b.disabled=true;
+ try{await fsdb.collection('settings').doc('announcement').set({id:String(Date.now()),text:tx.slice(0,500),color:colOk((document.querySelector('input[name=ac]:checked')||{}).value),at:FV.serverTimestamp()});b.closest('.mod').remove();modal(`<p class="ok">${t('annSent')}</p>`)}
+ catch(e){console.error(e);er.textContent=t('errG')+' '+(e.code||'');b.disabled=false}}
+async function clearAnn(b){b.disabled=true;try{await fsdb.collection('settings').doc('announcement').delete();b.closest('.mod').remove();rerender()}catch(e){console.error(e);alert(t('errG')+' '+(e.code||''));b.disabled=false}}
+fsdb.collection('settings').doc('announcement').onSnapshot(sn=>{S.ann=sn.exists?sn.data():null;rerender()},e=>console.error('ann',e));
+
+/* ---- إدارة المدرسين: نشاط + إيقاف/تفعيل ---- */
+function tAct(x){const A=D.adm;let h=x.off?`<span class="badge off">⛔ ${t('suspended')}</span>`:'';if(!A.loaded)return h;
+ const ls=A.lessons.filter(l=>l.teacherId===x.id),ex=A.exams.filter(e=>e.teacherId===x.id),sb=A.subs.filter(s=>s.teacherId===x.id);
+ const ts=[...ls.map(l=>+l.id),...ex.map(e=>+e.id),...sb.map(s=>tsec(s.at)*1000)].filter(n=>n>1e12);const last=ts.length?Math.max(...ts):0;
+ return h+`<div class="sm">📖 ${ls.length} · 📄 ${ex.length} · 📝 ${sb.length} (${sb.filter(s=>s.grade==null).length} ${t('ungraded')}) · ${t('lastAct')}: ${last?new Date(last).toLocaleDateString():'—'}</div>`}
+async function togTeacher(tid){const x=D.teachers.find(z=>z.id===tid);if(!x||tid===S.user.id)return;const off=!x.off;if(off&&!confirm(t('confirmSusp')))return;
+ try{await fsdb.collection('teachers').doc(tid).update({off})}catch(e){console.error(e);alert(t('errG')+' '+(e.code||''))}}
+
+/* ---- لوحة الصفحة الرئيسية (2x2) ---- */
+const upExams=()=>[...D.exams].filter(e=>e.end>Date.now()&&(!e.grade||e.grade===myGrade(e.teacherId))).map(e=>({e,used:D.subs.filter(s=>s.examId===e.id).length})).filter(x=>x.used<(+x.e.tries||1)).sort((a,b)=>a.e.end-b.e.end);
+function left(ms){const d=ms-Date.now();if(d<=0)return t('ended');const m=Math.floor(d/6e4),h=Math.floor(m/60),dd=Math.floor(h/24);return dd>0?`${dd} ${t('dayU')} ${h%24} ${t('hourU')}`:h>0?`${h} ${t('hourU')} ${m%60} ${t('minU')}`:`${m} ${t('minU')}`}
+function stuProg(){const ls=D.lessons,ex=D.exams.filter(e=>!e.grade||e.grade===myGrade(e.teacherId));const done=ls.filter(l=>vc(l.id)>0).length+ex.filter(e=>D.subs.some(s=>s.examId===e.id)).length,tot=ls.length+ex.length;return{done,tot,pc:tot?Math.round(done/tot*100):0}}
+function homeNM(ls){const adm=isAdmin(),A=D.adm,ready=adm&&A.loaded&&!A.err,b=S.banner||{};
+ const L_=ready?[...A.lessons].sort(byNew):ls,E_=ready?A.exams:D.exams;
+ let h='';const an=S.ann;
+ if(an&&an.text&&(adm||LS.g('annSeen','')!==(an.id||'')))h+=annBar(an,adm);
+ if(!adm){const soon=upExams().filter(x=>x.e.end-Date.now()<172800000);
+  if(soon.length)h+=`<div class="annb warn"><span>⏰</span><div style="flex:1"><b>${t('examSoon')}</b>${soon.slice(0,3).map(x=>`<div>${esc(x.e.title)} — ${left(x.e.end)}</div>`).join('')}</div><button class="btn s" onclick="go('exams')">${t('exams')}</button></div>`}
+ h+=bannerH();
+ /* TL */
+ let tl;
+ if(adm){const stu=D.allLoaded?D.all.length:'…';
+  tl=`<div class="nmc"><div class="lrow"><h3>📊 ${t('overview')}</h3><button class="btn g s" onclick="loadAdm(true);loadAllStudents()">⟳</button></div><div class="stat4"><div><b>${stu}</b><span>${t('students')}</span></div><div><b>${D.teachers.length}</b><span>${t('teachers')}</span></div><div><b>${ready?L_.length:'…'}</b><span>${t('lessons')}</span></div><div><b>${ready?E_.length:'…'}</b><span>${t('exams')}</span></div></div><div class="avs">${D.teachers.slice(0,6).map(x=>av(x)).join('')}</div><button class="btn wide" style="margin-top:auto" onclick="annModal()">📢 ${t('announce')}</button></div>`}
+ else{const ot=D.teachers.filter(x=>x.id!==S.user.id),jn=(S.user.teachers||[]).length;
+  tl=`<div class="nmc"><h3>🧑‍🏫 ${t('availT')} (${ot.length})</h3><div class="avs">${ot.slice(0,6).map(x=>av(x)).join('')||`<p class="sm">${t('noT')}</p>`}</div><p class="sm">${t('mT')}: <b>${jn}</b>${jn?'':' — '+t('noJoin')}</p><button class="btn wide" style="margin-top:auto" onclick="go('teachers')">${t('teachers')}</button></div>`}
+ /* TR */
+ const l3=L_.slice(0,3),cls=['a','b','c'],open=l=>D.lessons.some(x=>x.id===l.id)?`view('${esc(l.id)}')`:`go('lessons')`;
+ const tr=`<div class="nmc"><h3>📘 ${t('latest')}</h3><div class="lc3">${[0,1,2].map(i=>{const l=l3[i];const st=(i===2&&b.img)?` style="background-image:url('${esc(b.img)}')"`:'';return l?`<div class="lc ${cls[i]}"${st} onclick="${open(l)}">${esc(l.title)}</div>`:`<div class="lc ${cls[i]}" style="opacity:.45"${st}>—</div>`}).join('')}</div><div class="sm">${l3.map(l=>'📘 '+esc(l.title)).join('<br>')||t('none')}</div><div class="sm" style="margin-top:auto">${t('lessons')}: <b>${L_.length}</b> · ${t('exams')}: <b>${E_.length}</b></div></div>`;
+ /* BL */
+ let bl;
+ if(adm)bl=`<div class="nmc"><h3>📨 ${t('reqs')} (${D.reqs.length})</h3>${D.reqs.slice(0,6).map(r=>`<div class="lrow"><b>${esc(r.name)} <span class="sm">· ${gname(r.grade||'')}</span></b><button class="plus" title="${t('accept')}" onclick="acceptReq('${esc(r.id)}')">＋</button></div>`).join('')||`<p class="sm">${t('noReq')}</p>`}</div>`;
+ else{const up=upExams().slice(0,5);bl=`<div class="nmc"><h3>⏰ ${t('upcoming')}</h3>${up.map(x=>`<div class="lrow"><div><b>${esc(x.e.title)}</b><div class="sm">⏳ ${left(x.e.end)} · ${x.used}/${x.e.tries}</div></div><button class="plus" title="${t('start')}" onclick="startExam('${esc(x.e.id)}')">▶</button></div>`).join('')||`<p class="sm">${t('noUp')}</p>`}</div>`}
+ /* BR */
+ let br;
+ if(adm){const sb=ready?A.subs:[],gd=sb.filter(s=>s.grade!=null).length,pc=sb.length?Math.round(gd/sb.length*100):0;
+  br=`<div class="nmc"><h3>📊 ${t('reports')}</h3><div class="mini3">${mini('reports',t('reports'))}${mini('teachers',t('teachers'))}${mini('students',t('students'))}</div><div><div class="sm">${t('gradedP')}: ${gd}/${sb.length} (${pc}%)</div><div class="nbar"><i style="width:${pc}%"></i></div></div></div>`}
+ else{const p=stuProg();br=`<div class="nmc"><h3>📈 ${t('myProg')}</h3><div class="mini3">${mini('lessons',t('lessons'))}${mini('exams',t('exams'))}${mini('perf',t('perf'))}</div><div><div class="sm">${t('pDone')} ${p.done} ${t('pOf')} ${p.tot} — <b>${p.pc}%</b></div><div class="nbar"><i style="width:${p.pc}%"></i></div></div></div>`}
+ h+=`<div class="nmg">${tl}${tr}${bl}${br}</div>`;
+ if(adm)h+=`<button class="pen bgpen" onclick="editBg()">✏️ ${t('bgEdit')}</button>`;
+ h+=`<h3>${t('latest')}</h3><div class="grid">${ls.map(l=>`<div class="sq" onclick="view('${esc(l.id)}')"><span>📘</span><b>${esc(l.title)}</b><small>${watched(l.id)?'✓ '+t('watched'):'▶ '+t('watch')}</small></div>`).join('')||`<p>${t('none')}</p>`}</div>`;
+ return h}
+
+/* ---- تقدّمي (طالب): إحصائيات إضافية ---- */
+function perfStats(){const g=D.subs.filter(s=>s.grade!=null&&!isNaN(parseFloat(s.grade))).map(s=>parseFloat(s.grade));
+ const avg=g.length?(g.reduce((a,b)=>a+b,0)/g.length).toFixed(1):'—',best=g.length?Math.max(...g):'—',wl=D.lessons.filter(l=>vc(l.id)>0).length;
+ return `<div class="grid" style="margin:14px 0"><div class="tile">👁<h2>${wl}/${D.lessons.length}</h2>${t('watchedL')}</div><div class="tile">🏆<h2>${avg}</h2>${t('avgG')}</div><div class="tile">⭐<h2>${best}</h2>${t('bestG')}</div><div class="tile">📝<h2>${D.subs.length}</h2>${t('subsN')}</div></div>`}
+
+/* ---- التقارير والتصدير ---- */
+function csvCell(c){let s=String(c==null?'':c);if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"'}
+function dlCsv(name,rows){const csv='\ufeff'+rows.map(r=>r.map(csvCell).join(',')).join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},600)}
+function repSrc(){const adm=isAdmin();return{subs:adm?D.adm.subs:D.subs,exs:adm?D.adm.exams:D.exams,us:adm?D.all:D.students}}
+function repRows(){const r=repSrc();
+ return r.subs.filter(s=>(!S.rt||s.teacherId===S.rt)&&(!S.re||s.examId===S.re)).map(s=>{const u=r.us.find(x=>x.id===s.studentId)||{},e=r.exs.find(x=>x.id===s.examId)||{},tc=D.teachers.find(x=>x.id===s.teacherId)||{};
+  return{name:s.name||((u.fn||'')+' '+(u.fam||'')).trim(),ph:u.ph||'',yr:gname((u.grades||{})[s.teacherId]||''),tn:tc.name||'',ex:e.title||'',gr:s.grade==null?'':s.grade,cm:s.comment||'',at:s.at&&s.at.toDate?s.at.toDate():null}}).sort((a,b)=>(b.at||0)-(a.at||0))}
+function reportsPage(){const adm=isAdmin();
+ if(adm&&(!D.adm.loaded||!D.allLoaded))return `<h2>${t('reports')}</h2><p class="sm">${t('loadingD')}</p>`;
+ const r=repSrc(),rows=repRows(),nums=rows.map(x=>parseFloat(x.gr)).filter(n=>!isNaN(n)),avg=nums.length?(nums.reduce((a,b)=>a+b,0)/nums.length).toFixed(1):'—';
+ const exOpts=r.exs.filter(e=>!S.rt||e.teacherId===S.rt).sort(byNew).map(e=>`<option value="${esc(e.id)}" ${S.re===e.id?'selected':''}>${esc(e.title)}</option>`).join('');
+ return `<h2>📊 ${t('reports')}</h2><div class="stat4" style="max-width:420px;margin:10px 0"><div><b>${rows.length}</b><span>${t('rows')}</span></div><div><b>${avg}</b><span>${t('avgL')}</span></div></div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0">${adm?`<select style="width:auto;margin:0" onchange="S.rt=this.value;S.re='';R()"><option value="">${t('allT')}</option>${D.teachers.map(x=>`<option value="${esc(x.id)}" ${S.rt===x.id?'selected':''}>${esc(x.name)}</option>`).join('')}</select>`:''}<select style="width:auto;margin:0" onchange="S.re=this.value;R()"><option value="">${t('allExams')}</option>${exOpts}</select>${adm?`<button class="btn g s" onclick="loadAdm(true);loadAllStudents()">⟳ ${t('refresh')}</button>`:''}</div>
+ <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" onclick="exportGrades()">⬇ ${t('exportRes')}</button><button class="btn p" onclick="exportStudents()">⬇ ${t('exportStu')}</button></div>
+ <div class="twrap"><table class="tbl"><thead><tr><th>${t('colName')}</th><th>${t('colPhone')}</th><th>${t('colYear')}</th><th>${t('teacherL')}</th><th>${t('exams')}</th><th>${t('gradeL')}</th><th>${t('comment')}</th><th>${t('colDate')}</th></tr></thead><tbody>${rows.slice(0,200).map(x=>`<tr><td>${esc(x.name)}</td><td dir="ltr">${esc(x.ph)}</td><td>${esc(x.yr)}</td><td>${esc(x.tn)}</td><td>${esc(x.ex)}</td><td><b>${esc(x.gr)}</b></td><td>${esc(x.cm)}</td><td>${x.at?esc(x.at.toLocaleString()):''}</td></tr>`).join('')||`<tr><td colspan="8">${t('noData')}</td></tr>`}</tbody></table></div>`}
+function exportGrades(){const rows=repRows();dlCsv('grades-'+new Date().toISOString().slice(0,10)+'.csv',[[t('colName'),t('colPhone'),t('colYear'),t('teacherL'),t('exams'),t('gradeL'),t('comment'),t('colDate')],...rows.map(x=>[x.name,x.ph,x.yr,x.tn,x.ex,x.gr,x.cm,x.at?x.at.toLocaleString():''])])}
+function exportStudents(){const us=repSrc().us;dlCsv('students-'+new Date().toISOString().slice(0,10)+'.csv',[[t('colName'),t('colEmail'),t('colPhone'),t('fp'),t('mp'),t('colYear'),t('teachers'),t('colDate')],...us.filter(u=>!S.rt||(u.teachers||[]).includes(S.rt)).map(u=>[((u.fn||'')+' '+(u.sn||'')+' '+(u.fam||'')).trim(),u.gm||u.email||'',u.ph||'',u.fp||'',u.mp||'',gname((u.grades||{})[isAdmin()?(S.rt||''):S.user.id]||''),(u.teachers||[]).map(id=>(D.teachers.find(z=>z.id===id)||{}).name).filter(Boolean).join(' | '),tstr(u.createdAt)])])}
+
 theme();R();applyBrand();
 auth.onAuthStateChanged(user=>{if(user){if(!S.user&&!SIGNING)afterLogin(user)}else if(S.user){stop();S.user=null;S.view='intro';R()}});
 </script></body></html>
